@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Görsel Yükleme Animasyonu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #0f172a; /* Koyu arka plan efekti daha iyi gösterir */
+            color: white;
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        
+        .image-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 4/5;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+            background-color: #1e293b;
+        }
+
+        #final-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* opacity geçişi artık wrapper üzerinden CSS animasyonu ile yapılıyor */
+        }
+
+        /* YENİ: Tarama (Scan) Efekti İçin Sınıflar */
+        #image-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        #image-wrapper.scan-anim {
+            opacity: 1;
+            clip-path: inset(0 0 100% 0); /* Başlangıçta tamamı gizli (alttan kesik) */
+            animation: scan-reveal 1.5s ease-in-out forwards;
+        }
+
+        @keyframes scan-reveal {
+            0% { clip-path: inset(0 0 100% 0); filter: brightness(1.5) contrast(120%); }
+            100% { clip-path: inset(0 0 0 0); filter: brightness(1) contrast(100%); opacity: 1; }
+        }
+
+        .scan-line {
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px cyan;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            z-index: 10;
+        }
+
+        .scan-anim .scan-line {
+            animation: scan-line-move 1.5s ease-in-out forwards;
+        }
+
+        @keyframes scan-line-move {
+            0% { top: 0%; opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+
+        #anim-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: opacity 0.5s ease-out; /* Kaybolma efekti scan ile uyumlu hale getirildi */
+        }
+
+        .loader-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.875rem;
+            color: #94a3b8;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mb-6 text-center">
+        <h1 class="text-2xl font-bold mb-2">Node Reveal Animasyonu</h1>
+        <p class="text-slate-400 text-sm">Noktalar belirir, ağ oluşur ve görsel ortaya çıkar.</p>
+    </div>
+
+    <!-- Dosya Yükleme Alanı -->
+    <div class="mb-6 w-full max-w-md flex gap-2 justify-center">
+        <div class="flex-1">
+            <label class="block mb-2 text-xs font-medium text-slate-300 text-center" for="silhouette_input">1. Silüet Görseli (Şekil)</label>
+            <input class="block w-full text-xs text-slate-300 border border-slate-600 rounded-lg cursor-pointer bg-slate-700 hover:bg-slate-600 focus:outline-none file:mr-2 file:py-1 file:px-2 file:rounded-l-lg file:border-0 file:font-semibold file:bg-indigo-600 file:text-white hover:file:bg-indigo-700" id="silhouette_input" type="file" accept="image/*">
+        </div>
+        <div class="flex-1">
+            <label class="block mb-2 text-xs font-medium text-slate-300 text-center" for="main_input">2. Ana Görsel (Renkler)</label>
+            <input class="block w-full text-xs text-slate-300 border border-slate-600 rounded-lg cursor-pointer bg-slate-700 hover:bg-slate-600 focus:outline-none file:mr-2 file:py-1 file:px-2 file:rounded-l-lg file:border-0 file:font-semibold file:bg-indigo-600 file:text-white hover:file:bg-indigo-700" id="main_input" type="file" accept="image/*">
+        </div>
+    </div>
+
+    <div class="image-container" id="container">
+        <div id="loading-text" class="loader-text">Görsel İşleniyor...</div>
+        <!-- Silüet Görseli (Sadece veri için, gizli) -->
+        <img id="silhouette-image" crossorigin="anonymous" src="https://images.unsplash.com/photo-1542044896530-05d3c054e276?auto=format&fit=crop&w=400&h=500&q=80" style="display:none;" alt="Silüet">
+        
+        <!-- Animasyon Canvası -->
+        <canvas id="anim-canvas"></canvas>
+
+        <!-- Gerçek Görsel ve Glitch Efekti İçin Wrapper -->
+        <div id="image-wrapper">
+            <img id="final-image" crossorigin="anonymous" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&h=500&q=80" alt="Portre">
+            <div class="scan-line"></div>
+        </div>
+    </div>
+
+    <button id="replay-btn" class="mt-8 px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full font-medium transition-colors opacity-0 pointer-events-none">
+        Animasyonu Tekrar Oynat
+    </button>
+
+    <script>
+        const canvas = document.getElementById('anim-canvas');
+        const ctx = canvas.getContext('2d', { willReadFrequently: true });
+        const imgElement = document.getElementById('final-image');
+        const silhouetteElement = document.getElementById('silhouette-image');
+        const imageWrapper = document.getElementById('image-wrapper'); // Glitch Wrapper Eklendi
+        const replayBtn = document.getElementById('replay-btn');
+        const loadingText = document.getElementById('loading-text');
+        const silhouetteInput = document.getElementById('silhouette_input');
+        const mainInput = document.getElementById('main_input');
+
+        let nodes = [];
+        let animationFrameId;
+        let startTime = null;
+
+        // Ayarlar - Daha yoğun, ferah ve akıcı olması için güncellendi
+        const MAX_NODES = 250; // Ana düğüm sayısı artırıldı (Eski: 55)
+        const MAX_AMBIENT_NODES = 450; // Etrafta uçuşan düğüm sayısı artırıldı (Eski: 100)
+        const MAX_BACKGROUND_NODES = 400; // YENİ: Silüet dışındaki boşlukları dolduracak rastgele noktalar
+        const MIN_NODE_DISTANCE = 8; // Birbirlerine daha yakın durabilmeleri için azaltıldı (Eski: 30)
+        const CONNECTION_DISTANCE = 35; // Çok fazla düğüm olacağı için çizgi mesafesi daraltıldı (Ağ çok karışmasın diye)
+        const PHASE_3_START = 4000; // Görselin belirmesi ve GLITCH efekti anı
+        const ANIMATION_END = 5000;
+
+        let imagesLoaded = 0;
+
+        function checkInit() {
+            imagesLoaded++;
+            if(imagesLoaded >= 2) setupAnimation();
+        }
+
+        function init() {
+            imagesLoaded = 0;
+            if (imgElement.complete) checkInit(); else imgElement.onload = checkInit;
+            if (silhouetteElement.complete) checkInit(); else silhouetteElement.onload = checkInit;
+
+            replayBtn.addEventListener('click', () => {
+                replayBtn.style.opacity = '0';
+                replayBtn.style.pointerEvents = 'none';
+                setupAnimation();
+            });
+
+            // 1. Silüet Görseli Yükleme
+            silhouetteInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        silhouetteElement.src = event.target.result;
+                        loadingText.style.opacity = '1';
+                        loadingText.innerText = "Silüet Hazırlanıyor...";
+                        silhouetteElement.onload = () => {
+                            replayBtn.style.opacity = '0';
+                            replayBtn.style.pointerEvents = 'none';
+                            setupAnimation();
+                        };
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // 2. Ana Görsel Yükleme
+            mainInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        imgElement.src = event.target.result;
+                        loadingText.style.opacity = '1';
+                        loadingText.innerText = "Görsel Hazırlanıyor...";
+                        imgElement.onload = () => {
+                            replayBtn.style.opacity = '0';
+                            replayBtn.style.pointerEvents = 'none';
+                            setupAnimation();
+                        };
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        function setupAnimation() {
+            cancelAnimationFrame(animationFrameId);
+            loadingText.style.opacity = '0';
+            
+            const width = imgElement.clientWidth || 400;
+            const height = imgElement.clientHeight || 500;
+            canvas.width = width;
+            canvas.height = height;
+
+            // Animasyon öncesi durumları sıfırla
+            imageWrapper.classList.remove('scan-anim');
+            imageWrapper.style.opacity = '0';
+            canvas.style.opacity = '1';
+
+            // 1. Ana Görseli (Renkleri) Çiz ve Verisini Al
+            const containerRatio = width / height;
+            const imgRatio = imgElement.naturalWidth / imgElement.naturalHeight;
+            let drawWidth = width;
+            let drawHeight = height;
+            let offsetX = 0;
+            let offsetY = 0;
+
+            if (imgRatio > containerRatio) {
+                drawHeight = height;
+                drawWidth = height * imgRatio;
+                offsetX = (width - drawWidth) / 2;
+            } else {
+                drawWidth = width;
+                drawHeight = width / imgRatio;
+                offsetY = (height - drawHeight) / 2;
+            }
+
+            ctx.drawImage(imgElement, offsetX, offsetY, drawWidth, drawHeight);
+            const mainData = ctx.getImageData(0, 0, width, height).data;
+            ctx.clearRect(0, 0, width, height);
+
+            // 2. Silüet Görselini (Şekli) Çiz ve Verisini Al
+            const silRatio = silhouetteElement.naturalWidth / silhouetteElement.naturalHeight;
+            let silDrawWidth = width;
+            let silDrawHeight = height;
+            let silOffsetX = 0;
+            let silOffsetY = 0;
+
+            if (silRatio > containerRatio) {
+                silDrawHeight = height;
+                silDrawWidth = height * silRatio;
+                silOffsetX = (width - silDrawWidth) / 2;
+            } else {
+                silDrawWidth = width;
+                silDrawHeight = width / silRatio;
+                silOffsetY = (height - silDrawHeight) / 2;
+            }
+
+            ctx.drawImage(silhouetteElement, silOffsetX, silOffsetY, silDrawWidth, silDrawHeight);
+            const silData = ctx.getImageData(0, 0, width, height).data;
+            ctx.clearRect(0, 0, width, height);
+
+            nodes = [];
+            const potentialEdges = [];
+
+            // Taramayı SİLÜET verisi üzerinden yap (Daha detaylı tarayıp havuz oluşturuyoruz)
+            for (let y = 0; y < height; y += 4) {
+                for (let x = 0; x < width; x += 4) {
+                    const idx = (y * width + x) * 4;
+                    const a = silData[idx + 3];
+
+                    if (a > 128) {
+                        const sR = silData[idx];
+                        const sG = silData[idx + 1];
+                        const sB = silData[idx + 2];
+                        const brightness = (sR + sG + sB) / 3;
+
+                        // Silüet üzerinden "Kenar Algılama"
+                        let isEdge = false;
+                        if (x < width - 4 && y < height - 4) {
+                            const idxR = (y * width + (x + 4)) * 4;
+                            const idxB = ((y + 4) * width + x) * 4;
+                            const bR = (silData[idxR] + silData[idxR+1] + silData[idxR+2]) / 3;
+                            const bB = (silData[idxB] + silData[idxB+1] + silData[idxB+2]) / 3;
+
+                            if (Math.abs(brightness - bR) > 20 || Math.abs(brightness - bB) > 20) {
+                                isEdge = true;
+                            }
+                        }
+                        
+                        if (isEdge) {
+                            // RENKLERİ ANA GÖRSELDEN (mainData) ALIYORUZ
+                            const mainR = mainData[idx];
+                            const mainG = mainData[idx + 1];
+                            const mainB = mainData[idx + 2];
+                            potentialEdges.push({ tx: x, ty: y, r: mainR, g: mainG, b: mainB });
+                        }
+                    }
+                }
+            }
+
+            // Rastgele karıştır
+            potentialEdges.sort(() => Math.random() - 0.5);
+
+            const mainNodes = [];
+            const ambientNodes = [];
+
+            for (const edge of potentialEdges) {
+                // 1. Ana Düğümleri Seç (Üst üste binmeyi engellemek için minimum mesafe kontrolü)
+                if (mainNodes.length < MAX_NODES) {
+                    let tooClose = false;
+                    for (const mNode of mainNodes) {
+                        if (Math.hypot(edge.tx - mNode.tx, edge.ty - mNode.ty) < MIN_NODE_DISTANCE) {
+                            tooClose = true;
+                            break;
+                        }
+                    }
+                    
+                    if (!tooClose) {
+                        const delay = (edge.tx / width) * 1500 + (Math.random() * 800);
+                        mainNodes.push({
+                            tx: edge.tx, ty: edge.ty,
+                            x: edge.tx + (Math.random() - 0.5) * 150, 
+                            y: edge.ty + (Math.random() - 0.5) * 150,
+                            r: edge.r, g: edge.g, b: edge.b,
+                            opacity: 0, delay: delay, connections: [], isAmbient: false
+                        });
+                        continue; // Ana düğüm yapıldıysa ortam düğümü havuzuna girmesin
+                    }
+                }
+
+                // 2. Bağlı Olmayan (Ambient/Toz) Düğümleri Seç
+                if (ambientNodes.length < MAX_AMBIENT_NODES) {
+                    if (Math.random() < 0.1) { // Sadece bazılarından al
+                        // Sınırların biraz etrafına saçılması için rastgele sapma (+- 25px) ekliyoruz
+                        const scatterX = edge.tx + (Math.random() - 0.5) * 50;
+                        const scatterY = edge.ty + (Math.random() - 0.5) * 50;
+                        
+                        const delay = (edge.tx / width) * 1500 + (Math.random() * 1200);
+                        ambientNodes.push({
+                            tx: scatterX, ty: scatterY,
+                            x: scatterX + (Math.random() - 0.5) * 200, 
+                            y: scatterY + (Math.random() - 0.5) * 200,
+                            r: edge.r, g: edge.g, b: edge.b,
+                            opacity: 0, delay: delay, connections: [], isAmbient: true
+                        });
+                    }
+                }
+
+                // İki liste de dolduysa taramayı durdur
+                if (mainNodes.length >= MAX_NODES && ambientNodes.length >= MAX_AMBIENT_NODES) {
+                    break;
+                }
+            }
+
+            // 3. Arka Plan (Boşluk/Silüet Harici) Düğümlerini Oluştur
+            const backgroundNodes = [];
+            for (let i = 0; i < MAX_BACKGROUND_NODES; i++) {
+                // Tüm canvas üzerinde tamamen rastgele bir x, y koordinatı seç
+                const rx = Math.floor(Math.random() * width);
+                const ry = Math.floor(Math.random() * height);
+                
+                // Seçilen rastgele noktanın rengini ana görselden al
+                const idx = (ry * width + rx) * 4;
+                const r = mainData[idx] || 255;
+                const g = mainData[idx + 1] || 255;
+                const b = mainData[idx + 2] || 255;
+
+                // Ekranın farklı yerlerinden uçarak gelmeleri için başlangıç sapması
+                const startOffsetX = (Math.random() - 0.5) * 300;
+                const startOffsetY = (Math.random() - 0.5) * 300;
+                const delay = Math.random() * 2500; // Belirme zamanını geniş bir süreye yay
+
+                backgroundNodes.push({
+                    tx: rx, ty: ry, // Hedef: Rastgele seçilen arka plan noktası
+                    x: rx + startOffsetX, 
+                    y: ry + startOffsetY,
+                    r: r, g: g, b: b,
+                    opacity: 0, delay: delay, connections: [], 
+                    isAmbient: true // Ağa dahil olmamaları (çizgi çekmemeleri) için true
+                });
+            }
+
+            // Tüm nodeları birleştir
+            nodes = [...mainNodes, ...ambientNodes, ...backgroundNodes];
+
+            // Hedef lokasyonlarına göre kim kiminle bağlanacak hesapla
+            // SADECE ana düğümler (isAmbient === false) arasına çizgi çek
+            for (let i = 0; i < nodes.length; i++) {
+                if (nodes[i].isAmbient) continue;
+
+                for (let j = i + 1; j < nodes.length; j++) {
+                    if (nodes[j].isAmbient) continue;
+
+                    const dx = nodes[i].tx - nodes[j].tx;
+                    const dy = nodes[i].ty - nodes[j].ty;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (dist < CONNECTION_DISTANCE) {
+                        nodes[i].connections.push(nodes[j]);
+                    }
+                }
+            }
+
+            startTime = performance.now();
+            animate();
+        }
+
+        function animate() {
+            const currentTime = performance.now();
+            const elapsed = currentTime - startTime;
+
+            // Her karede hafif bir iz bırakarak temizle (motion blur efekti)
+            ctx.fillStyle = 'rgba(15, 23, 42, 0.3)'; // body arka plan rengiyle uyumlu
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Renklerin birbirine karışırken daha parlak (ışıklı) görünmesi için
+            ctx.globalCompositeOperation = 'screen';
+
+            ctx.lineWidth = 0.4;
+
+            nodes.forEach(node => {
+                if (elapsed > node.delay) {
+                    // Yavaşça hedefine doğru süzül (easing)
+                    node.x += (node.tx - node.x) * 0.04;
+                    node.y += (node.ty - node.y) * 0.04;
+                    
+                    // Opaklığı artır
+                    if (node.opacity < 1) {
+                        node.opacity += 0.03;
+                    }
+
+                    // Noktayı çiz
+                    ctx.beginPath();
+                    ctx.arc(node.x, node.y, 1.2, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(${node.r}, ${node.g}, ${node.b}, ${node.opacity})`;
+                    ctx.fill();
+
+                    // Çizgileri çiz (Örümcek ağı gibi birbirine yaklaştıkça örülür)
+                    node.connections.forEach(target => {
+                        if (target.opacity > 0) {
+                            const currentDist = Math.hypot(node.x - target.x, node.y - target.y);
+                            
+                            // Parçacıklar birbirine yeterince yaklaştıysa çizgiyi çek
+                            if (currentDist < CONNECTION_DISTANCE + 15) {
+                                // Mesafe uzaklaştıkça çizgi silikleşir
+                                const lineOpacity = Math.min(node.opacity, target.opacity) * (1 - (currentDist / (CONNECTION_DISTANCE + 15))) * 0.7;
+                                
+                                ctx.beginPath();
+                                ctx.moveTo(node.x, node.y);
+                                ctx.lineTo(target.x, target.y);
+                                
+                                const avgR = (node.r + target.r) / 2;
+                                const avgG = (node.g + target.g) / 2;
+                                const avgB = (node.b + target.b) / 2;
+                                
+                                ctx.strokeStyle = `rgba(${avgR}, ${avgG}, ${avgB}, ${lineOpacity})`;
+                                ctx.stroke();
+                            }
+                        }
+                    });
+                }
+            });
+
+            // Geri varsayılan blend moduna dön
+            ctx.globalCompositeOperation = 'source-over';
+
+            // 3. AŞAMA: Gerçek Görselin Tarama Efektiyle Belirmesi
+            if (elapsed > PHASE_3_START) {
+                if (!imageWrapper.classList.contains('scan-anim')) {
+                    imageWrapper.classList.add('scan-anim');
+                    canvas.style.opacity = '0'; // Tarama başlarken noktalar yavaşça yok olur
+                }
+            }
+
+            if (elapsed < ANIMATION_END) {
+                animationFrameId = requestAnimationFrame(animate);
+            } else {
+                replayBtn.style.opacity = '1';
+                replayBtn.style.pointerEvents = 'auto';
+            }
+        }
+
+        window.addEventListener('load', init);
+
+    </script>
+</body>
+</html>
