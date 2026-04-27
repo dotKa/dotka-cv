@@ -2,7 +2,7 @@
 
 Full Stack Developer / Product Engineer
 
-Interactive CV and portfolio of Yasin Karadeniz, a full-stack developer and product engineer building real systems across software, automation, event technology and deployment.
+Interactive CV and portfolio of Yasin Karadeniz, a full-stack developer building production-grade systems across real-time software, automation, event technology, backend architecture and deployment.
 
 ## Contact
 

@@ -28,7 +28,7 @@ export const messages = {
     },
     intro: {
       eyebrow: "interactive cv",
-      title: "An interactive CV of a developer who builds real systems.",
+      title: "I build production-grade software, automation systems and real-time products.",
       description:
         "Full-stack developer, product builder and hands-on system maker. Explore projects, experience and practical know-how through an interactive CV flow.",
       viewProjects: "view projects",
@@ -46,7 +46,7 @@ export const messages = {
         {
           title: "01 / Developer Identity",
           text:
-            "Full-stack developer with a product-first mindset. I design and build systems end-to-end — from interface to backend to deployment — focused on real-world usability, reliability, and solving operational problems."
+            "I build production-grade systems across real-time architecture, scalable backend design and deployment. My work usually covers the full lifecycle: development, integration, deployment and maintenance, with a focus on systems that operate reliably in real-world conditions."
         },
         {
           title: "02 / Know-how",
@@ -137,7 +137,7 @@ export const messages = {
     },
     intro: {
       eyebrow: "interactive cv",
-      title: "Gerçek sistemler geliştiren bir developer'ın interaktif CV'si.",
+      title: "Production-grade yazılımlar, otomasyon sistemleri ve gerçek zamanlı ürünler geliştiririm.",
       description:
         "Full-stack developer, ürün geliştirici ve uygulamalı sistem üreticisi. Projeleri, deneyimi ve pratik know-how'ı interaktif CV akışı içinde keşfedin.",
       viewProjects: "projeleri gör",
@@ -155,7 +155,7 @@ export const messages = {
         {
           title: "01 / Developer Kimliği",
           text:
-            "Ürün öncelikli düşünen bir full-stack developer'ım. Arayüzden backend'e ve deployment'a kadar sistemleri uçtan uca tasarlar ve geliştiririm; odağım gerçek kullanım, güvenilirlik ve operasyonel problemleri çözmektir."
+            "Gerçek zamanlı mimari, ölçeklenebilir backend tasarımı ve deployment süreçlerini kapsayan production-grade sistemler geliştiririm. İşim genellikle geliştirme, entegrasyon, deployment ve bakım dahil tüm yaşam döngüsünü kapsar; odağım gerçek koşullarda güvenilir çalışan sistemlerdir."
         },
         {
           title: "02 / Know-how",

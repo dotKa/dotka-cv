@@ -2,7 +2,7 @@
 
 Full Stack Developer / Product Engineer
 
-Yasin Karadeniz'in interaktif CV ve portfolyosu; yazılım, otomasyon, event teknolojisi ve deployment alanlarında gerçek sistemler geliştiren full-stack developer ve ürün geliştirici.
+Yasin Karadeniz'in interaktif CV ve portfolyosu; gerçek zamanlı yazılım, otomasyon, event teknolojisi, backend mimarisi ve deployment alanlarında production-grade sistemler geliştiren full-stack developer.
 
 ## İletişim
 
