@@ -8,7 +8,7 @@ export function IntroScene({ discoveredCount, go, randomDiscovery }) {
     <section className="fade-in grid min-h-full items-center">
       <div className="mx-auto grid w-full max-w-7xl items-center gap-10 lg:grid-cols-[1fr_360px]">
         <div>
-          <p className="mb-5 font-mono text-sm uppercase tracking-[0.25em] text-cyan-300">interactive cv</p>
+          <p className="mb-5 hidden font-mono text-sm uppercase tracking-[0.25em] text-cyan-300 sm:block">interactive cv</p>
           <h1 className="max-w-4xl text-3xl font-semibold leading-snug sm:text-4xl md:text-5xl lg:text-6xl">
             An interactive CV of a developer who builds real systems.
           </h1>

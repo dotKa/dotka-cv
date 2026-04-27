@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, Navigate, NavLink, Route, Routes, useNavigate, useParams } from "react-router";
+import { Link, Navigate, NavLink, Route, Routes, useLocation, useNavigate, useParams } from "react-router";
 import { LogLine } from "./components/LogLine";
 import { SkillsMarquee } from "./components/SkillsMarquee";
 import { runDataChecks } from "./data/checks";
@@ -87,8 +87,10 @@ function ProjectRoute({ setSelectedProjectId, setVisitedProjects, go, inspectPro
 
 function AppShell() {
   const navigate = useNavigate();
+  const location = useLocation();
   const logRef = useRef(null);
   const [logOpen, setLogOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [selectedProjectId, setSelectedProjectId] = useState(readStoredSelectedProjectId);
   const [visitedProjects, setVisitedProjects] = useState(readStoredVisitedProjects);
   const [logs, setLogs] = useState([
@@ -116,6 +118,10 @@ function AppShell() {
   useEffect(() => {
     window.localStorage.setItem(visitedProjectsStorageKey, JSON.stringify(visitedProjects));
   }, [visitedProjects]);
+
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location.pathname]);
 
   function go(nextScene) {
     navigate(scenePaths[nextScene] || "/");
@@ -146,6 +152,7 @@ function AppShell() {
       <header className="fixed left-0 top-0 z-50 flex h-[84px] w-full items-center justify-between border-b border-white/10 bg-black/90 px-5 py-4 backdrop-blur md:px-10">
         <Link
           to="/"
+          onClick={() => setMobileMenuOpen(false)}
           className="flex min-w-0 items-center gap-3 font-mono text-sm uppercase tracking-[0.18em] text-white"
         >
           <span className="flex min-w-0 flex-wrap items-baseline gap-x-2 gap-y-0 leading-tight">
@@ -153,6 +160,15 @@ function AppShell() {
             <span className="whitespace-nowrap text-cyan-300 sm:before:mr-2 sm:before:content-['/']">Interactive CV</span>
           </span>
         </Link>
+        <button
+          type="button"
+          onClick={() => setMobileMenuOpen((value) => !value)}
+          className="border border-white/15 bg-black px-4 py-3 font-mono text-xs uppercase tracking-[0.14em] text-slate-200 transition hover:border-cyan-300 hover:text-cyan-300 md:hidden"
+          aria-expanded={mobileMenuOpen}
+          aria-controls="mobile-navigation"
+        >
+          {mobileMenuOpen ? "close" : "menu"}
+        </button>
         <nav className="hidden gap-2 md:flex">
           {scenes.map((item) => (
             <NavLink key={item} to={scenePaths[item]} end={item === "intro"} className={navClassName}>
@@ -168,6 +184,27 @@ function AppShell() {
             Download PDF
           </a>
         </nav>
+        {mobileMenuOpen && (
+          <nav
+            id="mobile-navigation"
+            className="absolute left-0 top-full grid w-full gap-2 border-b border-white/10 bg-black/95 p-5 shadow-2xl shadow-black/60 backdrop-blur md:hidden"
+          >
+            {scenes.map((item) => (
+              <NavLink key={item} to={scenePaths[item]} end={item === "intro"} className={navClassName}>
+                {sceneLabels[item]}
+              </NavLink>
+            ))}
+            <a
+              href="/cv/print"
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => setMobileMenuOpen(false)}
+              className="border border-cyan-300 bg-cyan-300 px-4 py-3 text-left text-sm uppercase tracking-[0.14em] text-slate-950 transition hover:bg-cyan-200"
+            >
+              Download PDF
+            </a>
+          </nav>
+        )}
       </header>
 
       <main className={`fixed left-0 right-0 z-10 overflow-y-auto px-5 md:px-10 ${logOpen ? "bottom-[258px] top-[84px]" : "bottom-[126px] top-[84px]"}`}>
