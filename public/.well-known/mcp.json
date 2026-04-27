@@ -14,6 +14,16 @@
       "name": "LLMS summary",
       "uri": "https://cv.dotka.xyz/llms.txt",
       "mime_type": "text/plain"
+    },
+    {
+      "name": "Turkish Markdown CV",
+      "uri": "https://cv.dotka.xyz/cv.tr.md",
+      "mime_type": "text/markdown"
+    },
+    {
+      "name": "Turkish LLMS summary",
+      "uri": "https://cv.dotka.xyz/llms.tr.txt",
+      "mime_type": "text/plain"
     }
   ]
 }

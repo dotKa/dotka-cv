@@ -1,0 +1,34 @@
+# Yasin Karadeniz — Interactive CV
+
+Yasin Karadeniz'in interaktif CV ve portfolyosu; yazılım, otomasyon, event teknolojisi ve deployment alanlarında gerçek sistemler geliştiren full-stack developer ve ürün geliştirici.
+
+## Ana Sayfalar
+
+- Ana Sayfa: https://cv.dotka.xyz/
+- Hakkımda: https://cv.dotka.xyz/about
+- Projeler: https://cv.dotka.xyz/projects
+- Deneyim: https://cv.dotka.xyz/experience
+- İletişim: https://cv.dotka.xyz/contact
+- Markdown CV: https://cv.dotka.xyz/cv.tr.md
+- Yazdırılabilir PDF route'u: https://cv.dotka.xyz/cv/print
+
+## Seçilmiş Projeler
+
+- [Relackout](https://cv.dotka.xyz/projects/relackout): Canlı etkinlikler için production-ready gerçek zamanlı ışık kontrol yazılımı.
+- [Relackout USB-DMX Hardware](https://cv.dotka.xyz/projects/usb-dmx): Relackout iş akışları için üretilen fiziksel USB-DMX donanımı.
+- [Content Generator & Distributor](https://cv.dotka.xyz/projects/content-generator): İçerik üretimi ve yayınlama iş akışları için platform.
+- [Library Management System](https://cv.dotka.xyz/projects/library): Küçük kütüphaneler için multi-tenant yönetim sistemi.
+- [Tickentra](https://cv.dotka.xyz/projects/tickentra): Biletleme ve event altyapısı konsepti.
+- [Quiz Night Platform](https://cv.dotka.xyz/projects/quiz-night): Etkinlikler için canlı quiz deneyimi sistemi.
+- [Automation & Data Systems](https://cv.dotka.xyz/projects/automation): Özel scraping, iş akışı ve iş otomasyonu sistemleri.
+
+## İletişim
+
+- E-posta: info@dotka.xyz
+- Telefon: +90 531 813 62 73
+- LinkedIn: linkedin.com/in/yasinka
+- GitHub: github.com/dotka
+
+## Agent Notları
+
+Bu kişisel bir interaktif CV ve portfolyo sitesidir. Public içerik HTML ve Markdown olarak erişilebilir. Bu sitede private API, login akışı, commerce akışı veya transactional agent endpoint'i yoktur.

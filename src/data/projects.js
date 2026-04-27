@@ -122,3 +122,116 @@ export const projects = [
     unlockHint: "Automation systems viewed"
   }
 ];
+
+const projectTranslations = {
+  tr: {
+    relackout: {
+      type: "Ürün / Sahne Teknolojisi / Developer-led SaaS",
+      year: "2026 — Günümüz",
+      short: "Canlı etkinlikler için production-ready gerçek zamanlı ışık kontrol yazılımı.",
+      story:
+        "Relackout; tiyatrolar, mekanlar ve etkinlik operatörleri için DMX ve Art-Net iş akışlarını sadeleştirmeye odaklanan production-ready bir ışık kontrol ürünüdür. Realtime mimari, UI mühendisliği, donanım entegrasyonu ve ürün teslimini tek sistemde birleştiren developer kimliğimi net biçimde yansıtır.",
+      points: [
+        "Gerçek kullanıcıları ve public konumlandırması olan production-ready ürün",
+        "DMX512 ve Art-Net tabanlı ışık kontrolü",
+        "Scene, cue stack ve canlı operasyon iş akışları",
+        "Fader, buton ve gruplardan oluşan özel mixer layout'u",
+        "Sadelik, hız, düşük gecikmeli kontrol ve pratik sahne kullanımı etrafında geliştirildi"
+      ],
+      unlockHint: "Relackout görüntülendi"
+    },
+    "usb-dmx": {
+      type: "Production Donanım / Developer-built Cihaz",
+      year: "2026 — Günümüz",
+      short: "Relackout iş akışları için üretilen fiziksel USB-DMX donanımı.",
+      story:
+        "Relackout için geliştirilen fiziksel USB-DMX donanım ürünü. Bu yalnızca prototip yönü değil; elektronik, RS485/DMX iletişimi, enclosure tasarımı, cihaz kullanılabilirliği ve yazılım uyumluluğu genelinde uygulamalı production düşüncesini temsil eder.",
+      points: [
+        "Relackout ekosistemi için üretilen fiziksel USB-DMX cihazı",
+        "USB'den RS485 / DMX iletişim katmanı",
+        "3D baskı enclosure planlama ve donanım kullanılabilirliği iterasyonu",
+        "Sahne ve etkinlik operatörleri için production-ready ürün yönü",
+        "Yazılım mühendisliği, fiziksel cihaz tasarımı ve gerçek dünya testlerini birleştirir"
+      ],
+      unlockHint: "USB-DMX donanımı görüntülendi"
+    },
+    "content-generator": {
+      type: "Otomasyon / Yayınlama",
+      year: "2025 — Günümüz",
+      short: "İçerik üretimi ve yayınlama iş akışları için platform.",
+      story:
+        "WordPress ve özel sistemler gibi CMS hedeflerine içerik üretmek, planlamak ve dağıtmak için geliştirilen multi-tenant bir platform.",
+      points: [
+        "Prompt ve içerik iş akışı yönetimi",
+        "Zamanlanmış yayınlama görevleri",
+        "WordPress ve CMS entegrasyonları",
+        "İçerik operasyonları için worker tabanlı mimari"
+      ],
+      unlockHint: "İçerik iş akışı görüntülendi"
+    },
+    library: {
+      type: "SaaS / Operasyon",
+      short: "Küçük kütüphaneler için multi-tenant yönetim sistemi.",
+      story:
+        "Kitap takibi, ödünç alma/verme iş akışları ve görsel raf haritalama fikirlerini içeren, küçük koleksiyonlar için pratik bir kütüphane platformu.",
+      points: [
+        "Kitap ödünç alma ve iade iş akışları",
+        "Global kitap metadata API entegrasyonu",
+        "Tenant'a özel kitap kodları",
+        "Fiziksel kütüphaneler için görsel raf / harita konsepti"
+      ],
+      unlockHint: "Kütüphane sistemi görüntülendi"
+    },
+    tickentra: {
+      type: "Event / Biletleme Altyapısı",
+      short: "Biletleme ve event altyapısı konsepti.",
+      story:
+        "Etkinlik organizatörleri için event oluşturma, bilet iş akışları, CRM-ready akışlar ve entegrasyonlar etrafında tasarlanan biletleme altyapısı yönü.",
+      points: [
+        "Organizatör odaklı event yönetimi",
+        "Bilet operasyon iş akışları",
+        "CRM-ready backend yapısı",
+        "Entegrasyon dostu ürün mimarisi"
+      ],
+      unlockHint: "Tickentra görüntülendi"
+    },
+    "quiz-night": {
+      type: "İnteraktif Event Deneyimi",
+      year: "2024 — Günümüz",
+      short: "Etkinlikler için canlı quiz deneyimi sistemi.",
+      story:
+        "Quiz night etkinlikleri için katılım, gerçek zamanlı puanlama ve izleyici etkileşimine odaklanan interaktif event sistemi.",
+      points: [
+        "Canlı soru akışı",
+        "Gerçek zamanlı puanlama mantığı",
+        "İzleyici katılım deneyimi",
+        "Sosyal etkinlikler ve mekanlar için tasarlandı"
+      ],
+      unlockHint: "Quiz platformu görüntülendi"
+    },
+    automation: {
+      type: "Otomasyon / Veri",
+      year: "2017 — Günümüz",
+      short: "Özel scraping, iş akışı ve iş otomasyonu sistemleri.",
+      story:
+        "Özel otomasyon sistemleri, veri toplama pipeline'ları, CRM akışları ve operasyonel araçlar geliştirme konusunda uzun soluklu deneyim.",
+      points: [
+        "Veri toplama ve scraping pipeline'ları",
+        "İş süreci otomasyonu",
+        "CRM ve iç iş akışı araçları",
+        "Bot tabanlı operasyonel sistemler"
+      ],
+      unlockHint: "Otomasyon sistemleri görüntülendi"
+    }
+  }
+};
+
+export function getProjects(language = "en") {
+  const translations = projectTranslations[language];
+  if (!translations) return projects;
+
+  return projects.map((project) => ({
+    ...project,
+    ...translations[project.id]
+  }));
+}

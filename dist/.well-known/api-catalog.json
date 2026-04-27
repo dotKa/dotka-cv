@@ -16,8 +16,18 @@
       "type": "text/plain"
     },
     {
+      "name": "Turkish LLMS text",
+      "url": "https://cv.dotka.xyz/llms.tr.txt",
+      "type": "text/plain"
+    },
+    {
       "name": "Markdown CV",
       "url": "https://cv.dotka.xyz/cv.md",
+      "type": "text/markdown"
+    },
+    {
+      "name": "Turkish Markdown CV",
+      "url": "https://cv.dotka.xyz/cv.tr.md",
       "type": "text/markdown"
     }
   ]

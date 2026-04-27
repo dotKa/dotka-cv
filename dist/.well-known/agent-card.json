@@ -11,7 +11,9 @@
   "links": {
     "sitemap": "https://cv.dotka.xyz/sitemap.xml",
     "llms": "https://cv.dotka.xyz/llms.txt",
+    "llms_tr": "https://cv.dotka.xyz/llms.tr.txt",
     "markdown_cv": "https://cv.dotka.xyz/cv.md",
+    "markdown_cv_tr": "https://cv.dotka.xyz/cv.tr.md",
     "api_catalog": "https://cv.dotka.xyz/.well-known/api-catalog.json",
     "mcp_server_card": "https://cv.dotka.xyz/.well-known/mcp-server.json",
     "webmcp": "https://cv.dotka.xyz/.well-known/webmcp.json"

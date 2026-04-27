@@ -1,11 +1,11 @@
 import { copyFile, mkdir, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { contact } from "../src/data/contact.js";
-import { experience } from "../src/data/experience.js";
-import { projects } from "../src/data/projects.js";
-import { siteMeta } from "../src/data/site.js";
-import { skillGroups } from "../src/data/skills.js";
+import { contact, getContact } from "../src/data/contact.js";
+import { experience, getExperience } from "../src/data/experience.js";
+import { getProjects, projects } from "../src/data/projects.js";
+import { getSiteMeta, siteMeta } from "../src/data/site.js";
+import { getSkillGroups, skillGroups } from "../src/data/skills.js";
 
 const rootDir = dirname(fileURLToPath(import.meta.url)).replace(/\/scripts$/, "");
 const publicDir = join(rootDir, "public");
@@ -23,6 +23,16 @@ function normalizeSiteUrl(url) {
 
 function absoluteUrl(path) {
   return `${siteUrl}${path}`;
+}
+
+function getLocalizedData(language = "en") {
+  return {
+    contact: getContact(language),
+    experience: getExperience(language),
+    projects: getProjects(language),
+    siteMeta: getSiteMeta(language),
+    skillGroups: getSkillGroups(language)
+  };
 }
 
 function xmlEscape(value) {
@@ -83,79 +93,139 @@ ${urls}
 `;
 }
 
-function buildLlmsTxt() {
-  return `# ${siteMeta.title}
+function buildLlmsTxt(language = "en") {
+  const data = getLocalizedData(language);
+  const labels =
+    language === "tr"
+      ? {
+          primaryPages: "Ana Sayfalar",
+          home: "Ana Sayfa",
+          about: "Hakkımda",
+          projects: "Projeler",
+          experience: "Deneyim",
+          contact: "İletişim",
+          markdownCv: "Markdown CV",
+          printablePdf: "Yazdırılabilir PDF route'u",
+          selectedProjects: "Seçilmiş Projeler",
+          agentNotes: "Agent Notları",
+          notes:
+            "Bu kişisel bir interaktif CV ve portfolyo sitesidir. Public içerik HTML ve Markdown olarak erişilebilir. Bu sitede private API, login akışı, commerce akışı veya transactional agent endpoint'i yoktur."
+        }
+      : {
+          primaryPages: "Primary Pages",
+          home: "Home",
+          about: "About",
+          projects: "Projects",
+          experience: "Experience",
+          contact: "Contact",
+          markdownCv: "Markdown CV",
+          printablePdf: "Printable PDF route",
+          selectedProjects: "Selected Projects",
+          agentNotes: "Agent Notes",
+          notes:
+            "This is a personal interactive CV and portfolio. Public content is available as HTML and Markdown. There is no private API, login flow, commerce flow, or transactional agent endpoint for this site."
+        };
 
-${siteMeta.description}
+  return `# ${data.siteMeta.title}
 
-## Primary Pages
+${data.siteMeta.description}
 
-- Home: ${absoluteUrl("/")}
-- About: ${absoluteUrl("/about")}
-- Projects: ${absoluteUrl("/projects")}
-- Experience: ${absoluteUrl("/experience")}
-- Contact: ${absoluteUrl("/contact")}
-- Markdown CV: ${absoluteUrl("/cv.md")}
-- Printable PDF route: ${absoluteUrl("/cv/print")}
+## ${labels.primaryPages}
 
-## Selected Projects
+- ${labels.home}: ${absoluteUrl("/")}
+- ${labels.about}: ${absoluteUrl("/about")}
+- ${labels.projects}: ${absoluteUrl("/projects")}
+- ${labels.experience}: ${absoluteUrl("/experience")}
+- ${labels.contact}: ${absoluteUrl("/contact")}
+- ${labels.markdownCv}: ${absoluteUrl(language === "tr" ? "/cv.tr.md" : "/cv.md")}
+- ${labels.printablePdf}: ${absoluteUrl("/cv/print")}
 
-${projects.map((project) => `- [${project.title}](${absoluteUrl(`/projects/${project.id}`)}): ${project.short}`).join("\n")}
+## ${labels.selectedProjects}
 
-## Contact
+${data.projects.map((project) => `- [${project.title}](${absoluteUrl(`/projects/${project.id}`)}): ${project.short}`).join("\n")}
 
-${contact.map((item) => `- ${item.label}: ${item.value}`).join("\n")}
+## ${labels.contact}
 
-## Agent Notes
+${data.contact.map((item) => `- ${item.label}: ${item.value}`).join("\n")}
 
-This is a personal interactive CV and portfolio. Public content is available as HTML and Markdown. There is no private API, login flow, commerce flow, or transactional agent endpoint for this site.
+## ${labels.agentNotes}
+
+${labels.notes}
 `;
 }
 
-function buildCvMarkdown() {
-  return `# ${siteMeta.name}
+function buildCvMarkdown(language = "en") {
+  const data = getLocalizedData(language);
+  const labels =
+    language === "tr"
+      ? {
+          contact: "İletişim",
+          experience: "Deneyim",
+          date: "Tarih",
+          location: "Lokasyon",
+          projects: "Projeler",
+          type: "Tip",
+          year: "Yıl",
+          highlights: "Öne Çıkanlar",
+          stack: "Stack",
+          skills: "Skills & Tools"
+        }
+      : {
+          contact: "Contact",
+          experience: "Experience",
+          date: "Date",
+          location: "Location",
+          projects: "Projects",
+          type: "Type",
+          year: "Year",
+          highlights: "Highlights",
+          stack: "Stack",
+          skills: "Skills & Tools"
+        };
 
-${siteMeta.role}
+  return `# ${data.siteMeta.name}
 
-${siteMeta.description}
+${data.siteMeta.role}
 
-## Contact
+${data.siteMeta.description}
 
-${contact.map((item) => `- ${item.label}: ${item.value}`).join("\n")}
+## ${labels.contact}
 
-## Experience
+${data.contact.map((item) => `- ${item.label}: ${item.value}`).join("\n")}
 
-${experience
+## ${labels.experience}
+
+${data.experience
   .map((item) => {
     return `### ${item.role} — ${item.company}
 
-- Date: ${item.date}
-- Location: ${item.location}
+- ${labels.date}: ${item.date}
+- ${labels.location}: ${item.location}
 - ${item.details}`;
   })
   .join("\n\n")}
 
-## Projects
+## ${labels.projects}
 
-${projects
+${data.projects
   .map((project) => {
     return `### ${project.title}
 
-- Type: ${project.type}
-- Year: ${project.year}
+- ${labels.type}: ${project.type}
+- ${labels.year}: ${project.year}
 - URL: ${absoluteUrl(`/projects/${project.id}`)}
 - ${project.story}
 
-Highlights:
+${labels.highlights}:
 ${project.points.map((point) => `- ${point}`).join("\n")}
 
-Stack: ${project.stack.join(", ")}`;
+${labels.stack}: ${project.stack.join(", ")}`;
   })
   .join("\n\n")}
 
-## Skills & Tools
+## ${labels.skills}
 
-${skillGroups
+${data.skillGroups
   .map((group) => {
     return `### ${group.title}
 
@@ -185,7 +255,9 @@ function buildAgentJson() {
     links: {
       sitemap: absoluteUrl("/sitemap.xml"),
       llms: absoluteUrl("/llms.txt"),
+      llms_tr: absoluteUrl("/llms.tr.txt"),
       markdown_cv: absoluteUrl("/cv.md"),
+      markdown_cv_tr: absoluteUrl("/cv.tr.md"),
       api_catalog: absoluteUrl("/.well-known/api-catalog.json"),
       mcp_server_card: absoluteUrl("/.well-known/mcp-server.json"),
       webmcp: absoluteUrl("/.well-known/webmcp.json")
@@ -212,6 +284,16 @@ function buildMcpServerCard() {
         name: "LLMS summary",
         uri: absoluteUrl("/llms.txt"),
         mime_type: "text/plain"
+      },
+      {
+        name: "Turkish Markdown CV",
+        uri: absoluteUrl("/cv.tr.md"),
+        mime_type: "text/markdown"
+      },
+      {
+        name: "Turkish LLMS summary",
+        uri: absoluteUrl("/llms.tr.txt"),
+        mime_type: "text/plain"
       }
     ]
   });
@@ -225,7 +307,9 @@ function buildWebMcpJson() {
     tools: [],
     resources: [
       absoluteUrl("/cv.md"),
+      absoluteUrl("/cv.tr.md"),
       absoluteUrl("/llms.txt"),
+      absoluteUrl("/llms.tr.txt"),
       absoluteUrl("/sitemap.xml")
     ]
   });
@@ -250,8 +334,18 @@ function buildApiCatalog() {
         type: "text/plain"
       },
       {
+        name: "Turkish LLMS text",
+        url: absoluteUrl("/llms.tr.txt"),
+        type: "text/plain"
+      },
+      {
         name: "Markdown CV",
         url: absoluteUrl("/cv.md"),
+        type: "text/markdown"
+      },
+      {
+        name: "Turkish Markdown CV",
+        url: absoluteUrl("/cv.tr.md"),
         type: "text/markdown"
       }
     ]
@@ -286,13 +380,21 @@ function buildHeaders() {
   return `/*
   Link: </sitemap.xml>; rel="sitemap"; type="application/xml"
   Link: </llms.txt>; rel="alternate"; type="text/plain"
+  Link: </llms.tr.txt>; rel="alternate"; type="text/plain"; hreflang="tr"
   Link: </cv.md>; rel="alternate"; type="text/markdown"
+  Link: </cv.tr.md>; rel="alternate"; type="text/markdown"; hreflang="tr"
   Link: </.well-known/agent.json>; rel="service-desc"; type="application/json"
 
 /cv.md
   Content-Type: text/markdown; charset=utf-8
 
+/cv.tr.md
+  Content-Type: text/markdown; charset=utf-8
+
 /llms.txt
+  Content-Type: text/plain; charset=utf-8
+
+/llms.tr.txt
   Content-Type: text/plain; charset=utf-8
 
 /.well-known/*
@@ -309,7 +411,9 @@ await mkdir(wellKnownDir, { recursive: true });
 await writePublicFile("robots.txt", buildRobotsTxt());
 await writePublicFile("sitemap.xml", buildSitemapXml());
 await writePublicFile("llms.txt", buildLlmsTxt());
+await writePublicFile("llms.tr.txt", buildLlmsTxt("tr"));
 await writePublicFile("cv.md", buildCvMarkdown());
+await writePublicFile("cv.tr.md", buildCvMarkdown("tr"));
 await copyFile(profileImageSource, join(publicDir, "profile.jpeg"));
 await writePublicFile(".well-known/agent.json", buildAgentJson());
 await writePublicFile(".well-known/agent-card.json", buildAgentJson());

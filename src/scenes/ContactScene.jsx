@@ -1,14 +1,18 @@
 import { Panel } from "../components/Panel";
-import { contact } from "../data/contact";
+import { getContact } from "../data/contact";
+import { useI18n } from "../i18n/useI18n";
 
 export function ContactScene() {
+  const { language, t } = useI18n();
+  const contact = getContact(language);
+
   return (
     <section className="fade-in grid min-h-full items-center">
       <Panel className="mx-auto w-full max-w-4xl p-8 text-center">
-        <p className="mb-3 font-mono text-sm uppercase tracking-[0.25em] text-cyan-300">contact</p>
-        <h2 className="text-4xl font-semibold md:text-6xl">Let’s build something useful.</h2>
+        <p className="mb-3 font-mono text-sm uppercase tracking-[0.25em] text-cyan-300">{t("contact.eyebrow")}</p>
+        <h2 className="text-4xl font-semibold md:text-6xl">{t("contact.title")}</h2>
         <p className="mx-auto mt-6 max-w-2xl leading-8 text-slate-300">
-          Open to selected product, full-stack, automation, event infrastructure and stage technology opportunities.
+          {t("contact.description")}
         </p>
         <div className="mt-8 grid gap-3 md:grid-cols-2">
           {contact.map((item) => (

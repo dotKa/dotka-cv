@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, Navigate, NavLink, Route, Routes, useLocation, useNavigate, useParams } from "react-router";
 import { LogLine } from "./components/LogLine";
 import { SkillsMarquee } from "./components/SkillsMarquee";
 import { runDataChecks } from "./data/checks";
-import { projects } from "./data/projects";
-import { sceneLabels, scenes } from "./data/scenes";
+import { getProjects, projects } from "./data/projects";
+import { scenes } from "./data/scenes";
+import { useI18n } from "./i18n/useI18n";
 import { AboutScene } from "./scenes/AboutScene";
 import { ContactScene } from "./scenes/ContactScene";
 import { ExperienceScene } from "./scenes/ExperienceScene";
@@ -59,7 +60,7 @@ function navClassName({ isActive }) {
   }`;
 }
 
-function ProjectRoute({ setSelectedProjectId, setVisitedProjects, go, inspectProject, randomDiscovery, visitedProjects }) {
+function ProjectRoute({ go, inspectProject, projects, randomDiscovery, setSelectedProjectId, setVisitedProjects, visitedProjects }) {
   const { projectId } = useParams();
   const project = projects.find((item) => item.id === projectId);
 
@@ -78,6 +79,7 @@ function ProjectRoute({ setSelectedProjectId, setVisitedProjects, go, inspectPro
     <ProjectScene
       go={go}
       inspectProject={inspectProject}
+      projects={projects}
       randomDiscovery={randomDiscovery}
       selectedProject={project}
       visitedProjects={visitedProjects}
@@ -86,6 +88,7 @@ function ProjectRoute({ setSelectedProjectId, setVisitedProjects, go, inspectPro
 }
 
 function AppShell() {
+  const { language, setLanguage, supportedLanguages, t } = useI18n();
   const navigate = useNavigate();
   const location = useLocation();
   const logRef = useRef(null);
@@ -93,12 +96,9 @@ function AppShell() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [selectedProjectId, setSelectedProjectId] = useState(readStoredSelectedProjectId);
   const [visitedProjects, setVisitedProjects] = useState(readStoredVisitedProjects);
-  const [logs, setLogs] = useState([
-    "profile ready",
-    "sections available",
-    "projects ready"
-  ]);
+  const [logs, setLogs] = useState(() => t("logs.initial"));
 
+  const localizedProjects = useMemo(() => getProjects(language), [language]);
   const discoveredCount = visitedProjects.length;
 
   function pushLog(message) {
@@ -125,7 +125,7 @@ function AppShell() {
 
   function go(nextScene) {
     navigate(scenePaths[nextScene] || "/");
-    pushLog(`opened: ${nextScene}`);
+    pushLog(`${t("logs.opened")}: ${t(`nav.${nextScene}`)}`);
   }
 
   function inspectProject(project) {
@@ -136,8 +136,8 @@ function AppShell() {
   }
 
   function randomDiscovery() {
-    const unseen = projects.filter((project) => !visitedProjects.includes(project.id));
-    const pool = unseen.length > 0 ? unseen : projects;
+    const unseen = localizedProjects.filter((project) => !visitedProjects.includes(project.id));
+    const pool = unseen.length > 0 ? unseen : localizedProjects;
     const index = Math.floor(Math.random() * pool.length);
     inspectProject(pool[index]);
   }
@@ -157,7 +157,7 @@ function AppShell() {
         >
           <span className="flex min-w-0 flex-wrap items-baseline gap-x-2 gap-y-0 leading-tight">
             <span className="whitespace-nowrap">Yasin Karadeniz</span>
-            <span className="whitespace-nowrap text-cyan-300 sm:before:mr-2 sm:before:content-['/']">Interactive CV</span>
+            <span className="whitespace-nowrap text-cyan-300 sm:before:mr-2 sm:before:content-['/']">{t("header.titleSuffix")}</span>
           </span>
         </Link>
         <button
@@ -167,21 +167,36 @@ function AppShell() {
           aria-expanded={mobileMenuOpen}
           aria-controls="mobile-navigation"
         >
-          {mobileMenuOpen ? "close" : "menu"}
+          {mobileMenuOpen ? t("header.close") : t("header.menu")}
         </button>
         <nav className="hidden gap-2 md:flex">
           {scenes.map((item) => (
             <NavLink key={item} to={scenePaths[item]} end={item === "intro"} className={navClassName}>
-              {sceneLabels[item]}
+              {t(`nav.${item}`)}
             </NavLink>
           ))}
+          <div className="flex border border-white/15 bg-black">
+            {supportedLanguages.map((item) => (
+              <button
+                type="button"
+                key={item}
+                onClick={() => setLanguage(item)}
+                className={`px-3 py-3 text-sm uppercase tracking-[0.14em] transition ${
+                  item === language ? "bg-white text-slate-950" : "text-slate-300 hover:bg-white/10 hover:text-white"
+                }`}
+                aria-label={`${t("header.languageLabel")}: ${item.toUpperCase()}`}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
           <a
             href="/cv/print"
             target="_blank"
             rel="noreferrer"
             className="border border-cyan-300 bg-cyan-300 px-4 py-3 text-left text-sm uppercase tracking-[0.14em] text-slate-950 transition hover:bg-cyan-200"
           >
-            Download PDF
+            {t("header.downloadPdf")}
           </a>
         </nav>
         {mobileMenuOpen && (
@@ -191,9 +206,24 @@ function AppShell() {
           >
             {scenes.map((item) => (
               <NavLink key={item} to={scenePaths[item]} end={item === "intro"} className={navClassName}>
-                {sceneLabels[item]}
+                {t(`nav.${item}`)}
               </NavLink>
             ))}
+            <div className="grid grid-cols-2 border border-white/15 bg-black">
+              {supportedLanguages.map((item) => (
+                <button
+                  type="button"
+                  key={item}
+                  onClick={() => setLanguage(item)}
+                  className={`px-4 py-3 text-left text-sm uppercase tracking-[0.14em] transition ${
+                    item === language ? "bg-white text-slate-950" : "text-slate-300 hover:bg-white/10 hover:text-white"
+                  }`}
+                  aria-label={`${t("header.languageLabel")}: ${item.toUpperCase()}`}
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
             <a
               href="/cv/print"
               target="_blank"
@@ -201,7 +231,7 @@ function AppShell() {
               onClick={() => setMobileMenuOpen(false)}
               className="border border-cyan-300 bg-cyan-300 px-4 py-3 text-left text-sm uppercase tracking-[0.14em] text-slate-950 transition hover:bg-cyan-200"
             >
-              Download PDF
+              {t("header.downloadPdf")}
             </a>
           </nav>
         )}
@@ -211,7 +241,17 @@ function AppShell() {
         <Routes>
           <Route index element={<IntroScene discoveredCount={discoveredCount} go={go} randomDiscovery={randomDiscovery} />} />
           <Route path="about" element={<AboutScene />} />
-          <Route path="projects" element={<ProjectsScene discoveredCount={discoveredCount} inspectProject={inspectProject} visitedProjects={visitedProjects} />} />
+          <Route
+            path="projects"
+            element={
+              <ProjectsScene
+                discoveredCount={discoveredCount}
+                inspectProject={inspectProject}
+                projects={localizedProjects}
+                visitedProjects={visitedProjects}
+              />
+            }
+          />
           <Route
             path="projects/:projectId"
             element={
@@ -220,6 +260,7 @@ function AppShell() {
                 setVisitedProjects={setVisitedProjects}
                 go={go}
                 inspectProject={inspectProject}
+                projects={localizedProjects}
                 randomDiscovery={randomDiscovery}
                 visitedProjects={visitedProjects}
               />
@@ -240,9 +281,11 @@ function AppShell() {
             onClick={() => setLogOpen((value) => !value)}
             className="flex cursor-pointer items-center justify-between px-4 py-3 font-mono text-xs uppercase tracking-[0.18em] text-slate-500 hover:text-cyan-300"
           >
-            <span>Activity</span>
+            <span>{t("footer.activity")}</span>
             <div className="flex items-center gap-4">
-              <span>{discoveredCount}/{projects.length} discovered</span>
+              <span>
+                {discoveredCount}/{localizedProjects.length} {t("footer.discovered")}
+              </span>
 
               {/* Chevron Icon */}
               <div className="flex flex-col items-center justify-center text-[10px] leading-none">

@@ -1,12 +1,14 @@
 import { Button } from "../components/Button";
 import { Panel } from "../components/Panel";
-import { projects } from "../data/projects";
+import { useI18n } from "../i18n/useI18n";
 
-export function ProjectScene({ go, inspectProject, randomDiscovery, selectedProject, visitedProjects }) {
+export function ProjectScene({ go, inspectProject, projects, randomDiscovery, selectedProject, visitedProjects }) {
+  const { t } = useI18n();
+
   return (
     <section className="fade-in grid min-h-full gap-6 py-10 lg:grid-cols-[360px_1fr]">
       <Panel className="p-5">
-        <p className="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-slate-500">selected projects</p>
+        <p className="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-slate-500">{t("projects.listTitle")}</p>
         <div className="space-y-2">
           {projects.map((project) => (
             <button
@@ -22,8 +24,8 @@ export function ProjectScene({ go, inspectProject, randomDiscovery, selectedProj
           ))}
         </div>
         <div className="mt-6 flex gap-2">
-          <Button onClick={() => go("projects")}>projects</Button>
-          <Button onClick={randomDiscovery}>explore another</Button>
+          <Button onClick={() => go("projects")}>{t("projects.projectsButton")}</Button>
+          <Button onClick={randomDiscovery}>{t("projects.exploreAnother")}</Button>
         </div>
       </Panel>
 
@@ -40,14 +42,14 @@ export function ProjectScene({ go, inspectProject, randomDiscovery, selectedProj
             rel="noreferrer"
             className="mt-8 inline-flex border border-cyan-300 bg-cyan-300 px-4 py-3 text-sm uppercase tracking-[0.14em] text-slate-950 transition hover:bg-cyan-200"
           >
-            visit project
+            {t("projects.visitProject")}
           </a>
         )}
 
         <div className="mt-8 grid gap-4 md:grid-cols-2">
           {selectedProject.points.map((point) => (
             <div key={point} className="border border-white/10 bg-black/40 p-4">
-              <p className="font-mono text-xs uppercase tracking-[0.18em] text-slate-500">highlight</p>
+              <p className="font-mono text-xs uppercase tracking-[0.18em] text-slate-500">{t("projects.highlight")}</p>
               <p className="mt-2 text-slate-200">{point}</p>
             </div>
           ))}

@@ -10,3 +10,20 @@ export const siteMeta = {
   liveUrl: "https://cv.dotka.xyz",
   sameAs: ["https://linkedin.com/in/yasinka", "https://github.com/dotka"]
 };
+
+const siteMetaTranslations = {
+  tr: {
+    title: "Yasin Karadeniz — Interactive CV",
+    description:
+      "Yasin Karadeniz'in interaktif CV ve portfolyosu; yazılım, otomasyon, event teknolojisi ve deployment alanlarında gerçek sistemler geliştiren full-stack developer ve ürün geliştirici.",
+    role: "Full Stack Developer / Product Engineer",
+    location: "Türkiye"
+  }
+};
+
+export function getSiteMeta(language = "en") {
+  return {
+    ...siteMeta,
+    ...(siteMetaTranslations[language] || {})
+  };
+}

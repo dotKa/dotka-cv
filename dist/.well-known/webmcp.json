@@ -5,7 +5,9 @@
   "tools": [],
   "resources": [
     "https://cv.dotka.xyz/cv.md",
+    "https://cv.dotka.xyz/cv.tr.md",
     "https://cv.dotka.xyz/llms.txt",
+    "https://cv.dotka.xyz/llms.tr.txt",
     "https://cv.dotka.xyz/sitemap.xml"
   ]
 }

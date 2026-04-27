@@ -1,4 +1,5 @@
-import { marqueeSkills } from "../data/skills";
+import { getMarqueeSkills } from "../data/skills";
+import { useI18n } from "../i18n/useI18n";
 import { getSkillIcon } from "./skillIcons";
 
 function SkillBadge({ skill }) {
@@ -15,10 +16,13 @@ function SkillBadge({ skill }) {
 }
 
 export function SkillsMarquee() {
+  const { language, t } = useI18n();
+  const marqueeSkills = getMarqueeSkills(language);
+
   return (
     <div className="group border-b border-white/10 bg-black/95 py-3">
       <div className="mb-2 px-5 font-mono text-[10px] uppercase tracking-[0.2em] text-slate-500 md:px-10">
-        Skills & Tools
+        {t("skills.title")}
       </div>
       <div className="overflow-hidden whitespace-nowrap">
         <div className="inline-block animate-[marquee_110s_linear_infinite] group-hover:[animation-play-state:paused]">

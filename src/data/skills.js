@@ -84,3 +84,42 @@ export const skillGroups = [
 
 export const skills = skillGroups.flatMap((group) => group.items);
 export const marqueeSkills = [...skills, ...skills];
+
+const skillGroupTranslations = {
+  tr: [
+    {
+      title: "Developer Core",
+      note: "Ürün kodu, frontend, backend ve realtime akışlarda güçlü uygulamalı yetkinlik.",
+      items: skillGroups[0].items
+    },
+    {
+      title: "Backend & Data",
+      note: "Veriyi güvenilir şekilde saklayan, işleyen, otomatikleştiren ve dışa açan sistemler geliştirme.",
+      items: skillGroups[1].items
+    },
+    {
+      title: "DevOps & Deployment",
+      note: "Ürünleri koddan çalışan altyapıya taşımakta rahat çalışma.",
+      items: skillGroups[2].items
+    },
+    {
+      title: "Product & Delivery",
+      note: "Know-how yalnızca kodla sınırlı değil; ürünü şekillendirebilir, geliştirebilir, yayına alabilir ve işletebilirim.",
+      items: skillGroups[3].items
+    },
+    {
+      title: "Hardware / Event Tech",
+      note: "Tiyatro, ışık sistemleri ve fiziksel cihazlardan gelen pratik production bilgisi.",
+      items: skillGroups[4].items
+    }
+  ]
+};
+
+export function getSkillGroups(language = "en") {
+  return skillGroupTranslations[language] || skillGroups;
+}
+
+export function getMarqueeSkills(language = "en") {
+  const localizedSkills = getSkillGroups(language).flatMap((group) => group.items);
+  return [...localizedSkills, ...localizedSkills];
+}
