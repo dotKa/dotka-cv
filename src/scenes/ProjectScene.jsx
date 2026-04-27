@@ -33,6 +33,17 @@ export function ProjectScene({ go, inspectProject, randomDiscovery, selectedProj
         <p className="mt-2 text-slate-500">{selectedProject.year}</p>
         <p className="mt-8 max-w-3xl text-lg leading-8 text-slate-300">{selectedProject.story}</p>
 
+        {selectedProject.link && (
+          <a
+            href={selectedProject.link}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-8 inline-flex border border-cyan-300 bg-cyan-300 px-4 py-3 text-sm uppercase tracking-[0.14em] text-slate-950 transition hover:bg-cyan-200"
+          >
+            visit project
+          </a>
+        )}
+
         <div className="mt-8 grid gap-4 md:grid-cols-2">
           {selectedProject.points.map((point) => (
             <div key={point} className="border border-white/10 bg-black/40 p-4">

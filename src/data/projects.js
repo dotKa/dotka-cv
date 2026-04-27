@@ -15,6 +15,7 @@ export const projects = [
       "Built around simplicity, speed, low-latency control and practical stage usage"
     ],
     stack: ["Electron", "JavaScript", "Realtime", "DMX", "Art-Net", "Product Engineering"],
+    link: "https://relackout.com",
     unlockHint: "Relackout viewed"
   },
   {
