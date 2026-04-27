@@ -4,23 +4,23 @@ Interactive CV and portfolio of Yasin Karadeniz, a full-stack developer and prod
 
 ## Primary Pages
 
-- Home: https://example.com/
-- About: https://example.com/about
-- Projects: https://example.com/projects
-- Experience: https://example.com/experience
-- Contact: https://example.com/contact
-- Markdown CV: https://example.com/cv.md
-- Printable PDF route: https://example.com/cv/print
+- Home: https://cv.dotka.xyz/
+- About: https://cv.dotka.xyz/about
+- Projects: https://cv.dotka.xyz/projects
+- Experience: https://cv.dotka.xyz/experience
+- Contact: https://cv.dotka.xyz/contact
+- Markdown CV: https://cv.dotka.xyz/cv.md
+- Printable PDF route: https://cv.dotka.xyz/cv/print
 
 ## Selected Projects
 
-- [Relackout](https://example.com/projects/relackout): Production-ready real-time lighting control software for live events.
-- [Relackout USB-DMX Hardware](https://example.com/projects/usb-dmx): Physical USB-DMX hardware produced for Relackout workflows.
-- [Content Generator & Distributor](https://example.com/projects/content-generator): Content generation and publishing workflow platform.
-- [Library Management System](https://example.com/projects/library): Multi-tenant management system for small libraries.
-- [Tickentra](https://example.com/projects/tickentra): Ticketing and event infrastructure concept.
-- [Quiz Night Platform](https://example.com/projects/quiz-night): Live quiz experience system for events.
-- [Automation & Data Systems](https://example.com/projects/automation): Custom scraping, workflow and business automation systems.
+- [Relackout](https://cv.dotka.xyz/projects/relackout): Production-ready real-time lighting control software for live events.
+- [Relackout USB-DMX Hardware](https://cv.dotka.xyz/projects/usb-dmx): Physical USB-DMX hardware produced for Relackout workflows.
+- [Content Generator & Distributor](https://cv.dotka.xyz/projects/content-generator): Content generation and publishing workflow platform.
+- [Library Management System](https://cv.dotka.xyz/projects/library): Multi-tenant management system for small libraries.
+- [Tickentra](https://cv.dotka.xyz/projects/tickentra): Ticketing and event infrastructure concept.
+- [Quiz Night Platform](https://cv.dotka.xyz/projects/quiz-night): Live quiz experience system for events.
+- [Automation & Data Systems](https://cv.dotka.xyz/projects/automation): Custom scraping, workflow and business automation systems.
 
 ## Contact
 

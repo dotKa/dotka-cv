@@ -1,7 +1,7 @@
 {
   "name": "Yasin Karadeniz — Interactive CV",
   "description": "Interactive CV and portfolio of Yasin Karadeniz, a full-stack developer and product engineer building real systems across software, automation, event technology and deployment.",
-  "url": "https://example.com",
+  "url": "https://cv.dotka.xyz",
   "type": "personal_portfolio",
   "primary_language": "en",
   "human_contact": {
@@ -9,12 +9,12 @@
     "phone": "+90 531 813 62 73"
   },
   "links": {
-    "sitemap": "https://example.com/sitemap.xml",
-    "llms": "https://example.com/llms.txt",
-    "markdown_cv": "https://example.com/cv.md",
-    "api_catalog": "https://example.com/.well-known/api-catalog.json",
-    "mcp_server_card": "https://example.com/.well-known/mcp-server.json",
-    "webmcp": "https://example.com/.well-known/webmcp.json"
+    "sitemap": "https://cv.dotka.xyz/sitemap.xml",
+    "llms": "https://cv.dotka.xyz/llms.txt",
+    "markdown_cv": "https://cv.dotka.xyz/cv.md",
+    "api_catalog": "https://cv.dotka.xyz/.well-known/api-catalog.json",
+    "mcp_server_card": "https://cv.dotka.xyz/.well-known/mcp-server.json",
+    "webmcp": "https://cv.dotka.xyz/.well-known/webmcp.json"
   },
   "capabilities": [
     "browse_public_profile",
@@ -22,18 +22,18 @@
     "discover_projects"
   ],
   "routes": [
-    "https://example.com/",
-    "https://example.com/about",
-    "https://example.com/projects",
-    "https://example.com/experience",
-    "https://example.com/contact",
-    "https://example.com/cv/print",
-    "https://example.com/projects/relackout",
-    "https://example.com/projects/usb-dmx",
-    "https://example.com/projects/content-generator",
-    "https://example.com/projects/library",
-    "https://example.com/projects/tickentra",
-    "https://example.com/projects/quiz-night",
-    "https://example.com/projects/automation"
+    "https://cv.dotka.xyz/",
+    "https://cv.dotka.xyz/about",
+    "https://cv.dotka.xyz/projects",
+    "https://cv.dotka.xyz/experience",
+    "https://cv.dotka.xyz/contact",
+    "https://cv.dotka.xyz/cv/print",
+    "https://cv.dotka.xyz/projects/relackout",
+    "https://cv.dotka.xyz/projects/usb-dmx",
+    "https://cv.dotka.xyz/projects/content-generator",
+    "https://cv.dotka.xyz/projects/library",
+    "https://cv.dotka.xyz/projects/tickentra",
+    "https://cv.dotka.xyz/projects/quiz-night",
+    "https://cv.dotka.xyz/projects/automation"
   ]
 }

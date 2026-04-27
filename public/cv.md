@@ -49,7 +49,7 @@ Interactive CV and portfolio of Yasin Karadeniz, a full-stack developer and prod
 
 - Type: Product / Stage Technology / Developer-led SaaS
 - Year: 2026 — Present
-- URL: https://example.com/projects/relackout
+- URL: https://cv.dotka.xyz/projects/relackout
 - Relackout is a production-ready lighting control product focused on making DMX and Art-Net workflows simpler for theatres, venues and event operators. It reflects my developer identity clearly: realtime architecture, UI engineering, hardware integration and product delivery in one system.
 
 Highlights:
@@ -65,7 +65,7 @@ Stack: Electron, JavaScript, Realtime, DMX, Art-Net, Product Engineering
 
 - Type: Production Hardware / Developer-built Device
 - Year: 2026 — Present
-- URL: https://example.com/projects/usb-dmx
+- URL: https://cv.dotka.xyz/projects/usb-dmx
 - A physical USB-to-DMX hardware product developed for Relackout. This is not just a prototype direction: it represents hands-on production thinking across electronics, RS485/DMX communication, enclosure design, device usability and software compatibility.
 
 Highlights:
@@ -81,7 +81,7 @@ Stack: RS485, DMX, USB-DMX, 3D Printing, Hardware, Production
 
 - Type: Automation / Publishing
 - Year: 2025 — Present
-- URL: https://example.com/projects/content-generator
+- URL: https://cv.dotka.xyz/projects/content-generator
 - A multi-tenant platform for generating, scheduling and distributing content to CMS targets such as WordPress and custom systems.
 
 Highlights:
@@ -96,7 +96,7 @@ Stack: Meteor.js, Svelte, OpenAI, Jobs, CMS
 
 - Type: SaaS / Operations
 - Year: 2025
-- URL: https://example.com/projects/library
+- URL: https://cv.dotka.xyz/projects/library
 - A practical library platform designed for smaller collections, including book tracking, borrowing workflows and visual shelf mapping ideas.
 
 Highlights:
@@ -111,7 +111,7 @@ Stack: Meteor.js, Svelte, MongoDB, Multi-tenant
 
 - Type: Event / Ticketing Infrastructure
 - Year: 2025
-- URL: https://example.com/projects/tickentra
+- URL: https://cv.dotka.xyz/projects/tickentra
 - A ticketing infrastructure direction for event organizers, designed around event creation, ticket workflows, CRM-ready flows and integrations.
 
 Highlights:
@@ -126,7 +126,7 @@ Stack: Events, SaaS, CRM, Backend, UX
 
 - Type: Interactive Event Experience
 - Year: 2024 — Present
-- URL: https://example.com/projects/quiz-night
+- URL: https://cv.dotka.xyz/projects/quiz-night
 - An interactive event system for quiz nights, focused on participation, real-time scoring and audience engagement.
 
 Highlights:
@@ -141,7 +141,7 @@ Stack: Realtime, Events, UX, Game Flow
 
 - Type: Automation / Data
 - Year: 2017 — Present
-- URL: https://example.com/projects/automation
+- URL: https://cv.dotka.xyz/projects/automation
 - Long-running experience building custom automation systems, data collection pipelines, CRM flows and operational tools.
 
 Highlights:

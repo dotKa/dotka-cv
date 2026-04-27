@@ -16,4 +16,4 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://cv.dotka.xyz/sitemap.xml

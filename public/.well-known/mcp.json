@@ -1,18 +1,18 @@
 {
   "name": "Yasin Karadeniz Portfolio MCP Card",
   "description": "Static discovery card for a public portfolio. This site does not expose a live MCP endpoint.",
-  "url": "https://example.com",
+  "url": "https://cv.dotka.xyz",
   "mcp_endpoint": null,
   "capabilities": [],
   "resources": [
     {
       "name": "Markdown CV",
-      "uri": "https://example.com/cv.md",
+      "uri": "https://cv.dotka.xyz/cv.md",
       "mime_type": "text/markdown"
     },
     {
       "name": "LLMS summary",
-      "uri": "https://example.com/llms.txt",
+      "uri": "https://cv.dotka.xyz/llms.txt",
       "mime_type": "text/plain"
     }
   ]

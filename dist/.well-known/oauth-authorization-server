@@ -1,5 +1,5 @@
 {
-  "issuer": "https://example.com",
+  "issuer": "https://cv.dotka.xyz",
   "name": "OAuth Authorization Server Metadata",
   "status": "not_applicable",
   "reason": "This public portfolio does not require OAuth or expose protected resources.",

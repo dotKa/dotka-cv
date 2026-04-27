@@ -2,22 +2,22 @@
   "name": "Yasin Karadeniz Public Content Catalog",
   "description": "This site does not expose an application API. Public portfolio content is available through static HTML, sitemap and Markdown resources.",
   "version": "1.0.0",
-  "base_url": "https://example.com",
+  "base_url": "https://cv.dotka.xyz",
   "apis": [],
   "public_resources": [
     {
       "name": "Sitemap",
-      "url": "https://example.com/sitemap.xml",
+      "url": "https://cv.dotka.xyz/sitemap.xml",
       "type": "application/xml"
     },
     {
       "name": "LLMS text",
-      "url": "https://example.com/llms.txt",
+      "url": "https://cv.dotka.xyz/llms.txt",
       "type": "text/plain"
     },
     {
       "name": "Markdown CV",
-      "url": "https://example.com/cv.md",
+      "url": "https://cv.dotka.xyz/cv.md",
       "type": "text/markdown"
     }
   ]
