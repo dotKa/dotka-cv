@@ -1,0 +1,87 @@
+{
+  "name": "Yasin Karadeniz Portfolio Skills",
+  "description": "Machine-readable summary of public portfolio skills.",
+  "skills": [
+    {
+      "category": "Developer Core",
+      "description": "High hands-on ability across product code, frontend, backend and realtime flows.",
+      "items": [
+        "JavaScript",
+        "Node.js",
+        "React",
+        "Svelte",
+        "SvelteKit",
+        "Meteor.js",
+        "REST APIs",
+        "Realtime Systems",
+        "Component UI",
+        "Frontend Architecture"
+      ]
+    },
+    {
+      "category": "Backend & Data",
+      "description": "Building systems that store, process, automate and expose data reliably.",
+      "items": [
+        "MongoDB",
+        "PostgreSQL",
+        "SQLite",
+        "Job Queues",
+        "Multi-tenant",
+        "Auth Flows",
+        "Integrations",
+        "Scraping",
+        "CRM Workflows",
+        "CMS Integrations"
+      ]
+    },
+    {
+      "category": "DevOps & Deployment",
+      "description": "Comfortable taking products from code to running infrastructure.",
+      "items": [
+        "Docker",
+        "Docker Compose",
+        "Coolify",
+        "Linux Server",
+        "Nginx",
+        "Traefik",
+        "SSL / DNS",
+        "CI/CD",
+        "S3 / MinIO",
+        "VPS Ops",
+        "Log Debugging"
+      ]
+    },
+    {
+      "category": "Product & Delivery",
+      "description": "Know-how is not limited to code; I can shape, build, ship and operate products.",
+      "items": [
+        "Product Thinking",
+        "System Architecture",
+        "Figma to Product",
+        "MVP Planning",
+        "SaaS Structure",
+        "User Workflows",
+        "Technical Decisions",
+        "Problem Solving",
+        "Client Delivery",
+        "Documentation"
+      ]
+    },
+    {
+      "category": "Hardware / Event Tech",
+      "description": "Practical production knowledge from theatre, lighting systems and physical devices.",
+      "items": [
+        "DMX512",
+        "Art-Net",
+        "USB-DMX",
+        "RS485",
+        "Stage Workflows",
+        "Cue Planning",
+        "Sound & Lighting",
+        "3D Enclosures",
+        "Hardware Testing",
+        "Live Event Systems"
+      ]
+    }
+  ]
+}

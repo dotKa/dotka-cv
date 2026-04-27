@@ -1,0 +1,38 @@
+{
+  "name": "Yasin Karadeniz — Interactive CV",
+  "description": "Interactive CV and portfolio of Yasin Karadeniz, a full-stack developer and product engineer building real systems across software, automation, event technology and deployment.",
+  "url": "https://example.com",
+  "type": "personal_portfolio",
+  "primary_language": "en",
+  "human_contact": {
+    "email": "info@dotka.xyz",
+    "phone": "+90 531 813 62 73"
+  },
+  "links": {
+    "sitemap": "https://example.com/sitemap.xml",
+    "llms": "https://example.com/llms.txt",
+    "markdown_cv": "https://example.com/cv.md",
+    "api_catalog": "https://example.com/.well-known/api-catalog.json",
+    "mcp_server_card": "https://example.com/.well-known/mcp-server.json",
+    "webmcp": "https://example.com/.well-known/webmcp.json"
+  },
+  "capabilities": [
+    "browse_public_profile",
+    "read_markdown_cv",
+    "discover_projects"
+  ],
+  "routes": [
+    "https://example.com/",
+    "https://example.com/about",
+    "https://example.com/projects",
+    "https://example.com/experience",
+    "https://example.com/contact",
+    "https://example.com/projects/relackout",
+    "https://example.com/projects/usb-dmx",
+    "https://example.com/projects/content-generator",
+    "https://example.com/projects/library",
+    "https://example.com/projects/tickentra",
+    "https://example.com/projects/quiz-night",
+    "https://example.com/projects/automation"
+  ]
+}

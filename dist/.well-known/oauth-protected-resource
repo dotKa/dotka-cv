@@ -1,0 +1,9 @@
+{
+  "issuer": "https://example.com",
+  "name": "OAuth Protected Resource Metadata",
+  "status": "not_applicable",
+  "reason": "This public portfolio does not require OAuth or expose protected resources.",
+  "authorization_endpoint": null,
+  "token_endpoint": null,
+  "protected_resources": []
+}

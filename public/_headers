@@ -1,0 +1,14 @@
+/*
+  Link: </sitemap.xml>; rel="sitemap"; type="application/xml"
+  Link: </llms.txt>; rel="alternate"; type="text/plain"
+  Link: </cv.md>; rel="alternate"; type="text/markdown"
+  Link: </.well-known/agent.json>; rel="service-desc"; type="application/json"
+
+/cv.md
+  Content-Type: text/markdown; charset=utf-8
+
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+
+/.well-known/*
+  Content-Type: application/json; charset=utf-8

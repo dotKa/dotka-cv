@@ -1,0 +1,33 @@
+# Yasin Karadeniz — Interactive CV
+
+Interactive CV and portfolio of Yasin Karadeniz, a full-stack developer and product engineer building real systems across software, automation, event technology and deployment.
+
+## Primary Pages
+
+- Home: https://example.com/
+- About: https://example.com/about
+- Projects: https://example.com/projects
+- Experience: https://example.com/experience
+- Contact: https://example.com/contact
+- Markdown CV: https://example.com/cv.md
+
+## Selected Projects
+
+- [Relackout](https://example.com/projects/relackout): Production-ready real-time lighting control software for live events.
+- [Relackout USB-DMX Hardware](https://example.com/projects/usb-dmx): Physical USB-DMX hardware produced for Relackout workflows.
+- [Content Generator & Distributor](https://example.com/projects/content-generator): Content generation and publishing workflow platform.
+- [Library Management System](https://example.com/projects/library): Multi-tenant management system for small libraries.
+- [Tickentra](https://example.com/projects/tickentra): Ticketing and event infrastructure concept.
+- [Quiz Night Platform](https://example.com/projects/quiz-night): Live quiz experience system for events.
+- [Automation & Data Systems](https://example.com/projects/automation): Custom scraping, workflow and business automation systems.
+
+## Contact
+
+- Email: info@dotka.xyz
+- Phone: +90 531 813 62 73
+- LinkedIn: linkedin.com/in/yasinka
+- GitHub: github.com/dotka
+
+## Agent Notes
+
+This is a personal interactive CV and portfolio. Public content is available as HTML and Markdown. There is no private API, login flow, commerce flow, or transactional agent endpoint for this site.

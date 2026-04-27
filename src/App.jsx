@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import { Button } from "./components/Button";
+import { useEffect, useRef, useState } from "react";
+import { Link, Navigate, NavLink, Route, Routes, useNavigate, useParams } from "react-router";
 import { LogLine } from "./components/LogLine";
 import { SkillsMarquee } from "./components/SkillsMarquee";
 import { runDataChecks } from "./data/checks";
@@ -19,6 +19,13 @@ function addUnique(list, item) {
 const selectedProjectStorageKey = "interactive-cv:selected-project";
 const visitedProjectsStorageKey = "interactive-cv:visited-projects";
 const projectIds = projects.map((project) => project.id);
+const scenePaths = {
+  intro: "/",
+  about: "/about",
+  projects: "/projects",
+  experience: "/experience",
+  contact: "/contact"
+};
 
 function readStoredSelectedProjectId() {
   if (typeof window === "undefined") return "relackout";
@@ -43,10 +50,44 @@ if (dataErrors.length > 0) {
   console.warn("CV data check warnings:", dataErrors);
 }
 
+function navClassName({ isActive }) {
+  return `border px-4 py-3 text-left text-sm uppercase tracking-[0.14em] transition ${
+    isActive
+      ? "border-cyan-300 bg-cyan-300 text-slate-950"
+      : "border-white/15 bg-black text-slate-300 hover:border-cyan-300 hover:bg-cyan-300/10 hover:text-white"
+  }`;
+}
+
+function ProjectRoute({ setSelectedProjectId, setVisitedProjects, go, inspectProject, randomDiscovery, visitedProjects }) {
+  const { projectId } = useParams();
+  const project = projects.find((item) => item.id === projectId);
+
+  useEffect(() => {
+    if (!project) return;
+
+    setSelectedProjectId(project.id);
+    setVisitedProjects((current) => addUnique(current, project.id));
+  }, [project, setSelectedProjectId, setVisitedProjects]);
+
+  if (!project) {
+    return <Navigate to="/projects" replace />;
+  }
+
+  return (
+    <ProjectScene
+      go={go}
+      inspectProject={inspectProject}
+      randomDiscovery={randomDiscovery}
+      selectedProject={project}
+      visitedProjects={visitedProjects}
+    />
+  );
+}
+
 export default function App() {
+  const navigate = useNavigate();
   const logRef = useRef(null);
   const [logOpen, setLogOpen] = useState(false);
-  const [scene, setScene] = useState("intro");
   const [selectedProjectId, setSelectedProjectId] = useState(readStoredSelectedProjectId);
   const [visitedProjects, setVisitedProjects] = useState(readStoredVisitedProjects);
   const [logs, setLogs] = useState([
@@ -54,10 +95,6 @@ export default function App() {
     "sections available",
     "projects ready"
   ]);
-
-  const selectedProject = useMemo(() => {
-    return projects.find((project) => project.id === selectedProjectId) || projects[0];
-  }, [selectedProjectId]);
 
   const discoveredCount = visitedProjects.length;
 
@@ -80,14 +117,14 @@ export default function App() {
   }, [visitedProjects]);
 
   function go(nextScene) {
-    setScene(nextScene);
+    navigate(scenePaths[nextScene] || "/");
     pushLog(`opened: ${nextScene}`);
   }
 
   function inspectProject(project) {
     setSelectedProjectId(project.id);
     setVisitedProjects((current) => addUnique(current, project.id));
-    setScene("project");
+    navigate(`/projects/${project.id}`);
     pushLog(project.unlockHint);
   }
 
@@ -106,40 +143,46 @@ export default function App() {
       </div>
 
       <header className="fixed left-0 top-0 z-50 flex h-[84px] w-full items-center justify-between border-b border-white/10 bg-black/90 px-5 py-4 backdrop-blur md:px-10">
-        <button
-          type="button"
-          onClick={() => go("intro")}
+        <Link
+          to="/"
           className="flex min-w-0 items-center gap-3 font-mono text-sm uppercase tracking-[0.18em] text-white"
         >
           <span className="flex min-w-0 flex-wrap items-baseline gap-x-2 gap-y-0 leading-tight">
             <span className="whitespace-nowrap">Yasin Karadeniz</span>
             <span className="whitespace-nowrap text-cyan-300 sm:before:mr-2 sm:before:content-['/']">Interactive CV</span>
           </span>
-        </button>
+        </Link>
         <nav className="hidden gap-2 md:flex">
           {scenes.map((item) => (
-            <Button key={item} active={scene === item} onClick={() => go(item)}>
+            <NavLink key={item} to={scenePaths[item]} end={item === "intro"} className={navClassName}>
               {sceneLabels[item]}
-            </Button>
+            </NavLink>
           ))}
         </nav>
       </header>
 
       <main className={`fixed left-0 right-0 z-10 overflow-y-auto px-5 md:px-10 ${logOpen ? "bottom-[258px] top-[84px]" : "bottom-[126px] top-[84px]"}`}>
-        {scene === "intro" && <IntroScene discoveredCount={discoveredCount} go={go} randomDiscovery={randomDiscovery} />}
-        {scene === "about" && <AboutScene />}
-        {scene === "projects" && <ProjectsScene discoveredCount={discoveredCount} inspectProject={inspectProject} visitedProjects={visitedProjects} />}
-        {scene === "project" && (
-          <ProjectScene
-            go={go}
-            inspectProject={inspectProject}
-            randomDiscovery={randomDiscovery}
-            selectedProject={selectedProject}
-            visitedProjects={visitedProjects}
+        <Routes>
+          <Route index element={<IntroScene discoveredCount={discoveredCount} go={go} randomDiscovery={randomDiscovery} />} />
+          <Route path="about" element={<AboutScene />} />
+          <Route path="projects" element={<ProjectsScene discoveredCount={discoveredCount} inspectProject={inspectProject} visitedProjects={visitedProjects} />} />
+          <Route
+            path="projects/:projectId"
+            element={
+              <ProjectRoute
+                setSelectedProjectId={setSelectedProjectId}
+                setVisitedProjects={setVisitedProjects}
+                go={go}
+                inspectProject={inspectProject}
+                randomDiscovery={randomDiscovery}
+                visitedProjects={visitedProjects}
+              />
+            }
           />
-        )}
-        {scene === "experience" && <ExperienceScene />}
-        {scene === "contact" && <ContactScene />}
+          <Route path="experience" element={<ExperienceScene />} />
+          <Route path="contact" element={<ContactScene />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
       </main>
 
       <footer className="fixed bottom-0 left-0 z-50 w-full border-t border-white/10 bg-black/95">

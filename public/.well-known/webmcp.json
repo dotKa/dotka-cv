@@ -1,0 +1,11 @@
+{
+  "name": "Yasin Karadeniz WebMCP Discovery",
+  "description": "Public discovery metadata for an interactive CV. No authenticated tools are exposed.",
+  "url": "https://example.com",
+  "tools": [],
+  "resources": [
+    "https://example.com/cv.md",
+    "https://example.com/llms.txt",
+    "https://example.com/sitemap.xml"
+  ]
+}
