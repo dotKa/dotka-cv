@@ -2,73 +2,79 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://example.com/</loc>
-    <lastmod>2026-04-27T09:16:55.567Z</lastmod>
+    <lastmod>2026-04-27T09:27:57.746Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://example.com/about</loc>
-    <lastmod>2026-04-27T09:16:55.567Z</lastmod>
+    <lastmod>2026-04-27T09:27:57.746Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://example.com/projects</loc>
-    <lastmod>2026-04-27T09:16:55.567Z</lastmod>
+    <lastmod>2026-04-27T09:27:57.746Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://example.com/experience</loc>
-    <lastmod>2026-04-27T09:16:55.567Z</lastmod>
+    <lastmod>2026-04-27T09:27:57.746Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://example.com/contact</loc>
-    <lastmod>2026-04-27T09:16:55.567Z</lastmod>
+    <lastmod>2026-04-27T09:27:57.746Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://example.com/cv/print</loc>
+    <lastmod>2026-04-27T09:27:57.746Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://example.com/projects/relackout</loc>
-    <lastmod>2026-04-27T09:16:55.567Z</lastmod>
+    <lastmod>2026-04-27T09:27:57.746Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://example.com/projects/usb-dmx</loc>
-    <lastmod>2026-04-27T09:16:55.567Z</lastmod>
+    <lastmod>2026-04-27T09:27:57.746Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://example.com/projects/content-generator</loc>
-    <lastmod>2026-04-27T09:16:55.567Z</lastmod>
+    <lastmod>2026-04-27T09:27:57.746Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://example.com/projects/library</loc>
-    <lastmod>2026-04-27T09:16:55.567Z</lastmod>
+    <lastmod>2026-04-27T09:27:57.746Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://example.com/projects/tickentra</loc>
-    <lastmod>2026-04-27T09:16:55.567Z</lastmod>
+    <lastmod>2026-04-27T09:27:57.746Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://example.com/projects/quiz-night</loc>
-    <lastmod>2026-04-27T09:16:55.567Z</lastmod>
+    <lastmod>2026-04-27T09:27:57.746Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://example.com/projects/automation</loc>
-    <lastmod>2026-04-27T09:16:55.567Z</lastmod>
+    <lastmod>2026-04-27T09:27:57.746Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

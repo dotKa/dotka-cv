@@ -10,6 +10,7 @@ Interactive CV and portfolio of Yasin Karadeniz, a full-stack developer and prod
 - Experience: https://example.com/experience
 - Contact: https://example.com/contact
 - Markdown CV: https://example.com/cv.md
+- Printable PDF route: https://example.com/cv/print
 
 ## Selected Projects
 

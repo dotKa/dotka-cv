@@ -11,6 +11,7 @@ import { ExperienceScene } from "./scenes/ExperienceScene";
 import { IntroScene } from "./scenes/IntroScene";
 import { ProjectScene } from "./scenes/ProjectScene";
 import { ProjectsScene } from "./scenes/ProjectsScene";
+import { PrintCvPage } from "./pages/PrintCvPage";
 
 function addUnique(list, item) {
   return list.includes(item) ? list : [...list, item];
@@ -84,7 +85,7 @@ function ProjectRoute({ setSelectedProjectId, setVisitedProjects, go, inspectPro
   );
 }
 
-export default function App() {
+function AppShell() {
   const navigate = useNavigate();
   const logRef = useRef(null);
   const [logOpen, setLogOpen] = useState(false);
@@ -158,6 +159,14 @@ export default function App() {
               {sceneLabels[item]}
             </NavLink>
           ))}
+          <a
+            href="/cv/print"
+            target="_blank"
+            rel="noreferrer"
+            className="border border-cyan-300 bg-cyan-300 px-4 py-3 text-left text-sm uppercase tracking-[0.14em] text-slate-950 transition hover:bg-cyan-200"
+          >
+            Download PDF
+          </a>
         </nav>
       </header>
 
@@ -228,5 +237,14 @@ export default function App() {
         </div>
       </footer>
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/cv/print" element={<PrintCvPage />} />
+      <Route path="/*" element={<AppShell />} />
+    </Routes>
   );
 }

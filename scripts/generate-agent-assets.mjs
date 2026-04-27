@@ -13,7 +13,7 @@ const wellKnownDir = join(publicDir, ".well-known");
 const siteUrl = normalizeSiteUrl(process.env.VITE_SITE_URL || "https://example.com");
 const profileImageSource = join(rootDir, "references/img/WhatsApp Image 2026-04-24 at 17.02.48.jpeg");
 
-const staticRoutes = ["/", "/about", "/projects", "/experience", "/contact"];
+const staticRoutes = ["/", "/about", "/projects", "/experience", "/contact", "/cv/print"];
 const projectRoutes = projects.map((project) => `/projects/${project.id}`);
 const allRoutes = [...staticRoutes, ...projectRoutes];
 
@@ -96,6 +96,7 @@ ${siteMeta.description}
 - Experience: ${absoluteUrl("/experience")}
 - Contact: ${absoluteUrl("/contact")}
 - Markdown CV: ${absoluteUrl("/cv.md")}
+- Printable PDF route: ${absoluteUrl("/cv/print")}
 
 ## Selected Projects
 

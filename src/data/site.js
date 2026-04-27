@@ -7,5 +7,6 @@ export const siteMeta = {
   email: "info@dotka.xyz",
   phone: "+90 531 813 62 73",
   location: "Türkiye",
+  liveUrl: "https://cv.dotka.xyz",
   sameAs: ["https://linkedin.com/in/yasinka", "https://github.com/dotka"]
 };

@@ -145,3 +145,301 @@ a {
   mix-blend-mode: screen;
   animation: profileLightSweep 6.5s ease-in-out infinite;
 }
+
+.print-cv-page {
+  min-height: 100vh;
+  background: #e5e7eb;
+  color: #111827;
+  padding: 32px;
+}
+
+.print-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.print-actions button,
+.print-actions a {
+  border: 1px solid #0f172a;
+  background: #0f172a;
+  color: white;
+  padding: 10px 14px;
+  text-decoration: none;
+}
+
+.print-actions a {
+  background: white;
+  color: #0f172a;
+}
+
+.print-document {
+  max-width: 960px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.18);
+  padding: 44px;
+}
+
+.print-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 32px;
+  border-bottom: 3px solid #22d3ee;
+  padding-bottom: 28px;
+}
+
+.print-eyebrow,
+.print-meta {
+  margin: 0 0 8px;
+  color: #64748b;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.print-header h1 {
+  margin: 0;
+  color: #0f172a;
+  font-size: 44px;
+  line-height: 1;
+}
+
+.print-role {
+  margin: 12px 0 0;
+  color: #0e7490;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.print-contact-grid {
+  display: grid;
+  gap: 8px;
+}
+
+.print-contact-grid a {
+  display: grid;
+  gap: 2px;
+  color: #0f172a;
+  text-decoration: none;
+}
+
+.print-contact-grid span {
+  color: #64748b;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.print-contact-grid strong {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.print-header-aside {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 128px;
+  gap: 20px;
+  align-items: start;
+}
+
+.print-live-qr {
+  display: grid;
+  justify-items: center;
+  gap: 7px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  padding: 10px;
+  text-align: center;
+}
+
+.print-live-qr p {
+  margin: 0;
+  color: #64748b;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 9px;
+  line-height: 1.35;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.print-live-qr a {
+  color: #0e7490;
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.print-section {
+  margin-top: 30px;
+}
+
+.print-section h2 {
+  margin: 0 0 14px;
+  color: #0f172a;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+.print-section h2 + * {
+  break-before: avoid;
+  page-break-before: avoid;
+}
+
+.print-section p {
+  color: #334155;
+  line-height: 1.65;
+}
+
+.print-skill-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.print-card {
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  padding: 16px;
+}
+
+.print-card h3 {
+  margin: 0 0 8px;
+  color: #0f172a;
+  font-size: 16px;
+}
+
+.print-card p {
+  margin: 0 0 10px;
+}
+
+.print-pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.print-pill-list li {
+  border: 1px solid #bae6fd;
+  background: #ecfeff;
+  color: #155e75;
+  padding: 4px 7px;
+  font-size: 11px;
+}
+
+.print-project-list,
+.print-experience-list {
+  display: grid;
+  gap: 14px;
+}
+
+.print-project-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.print-project-heading span {
+  color: #64748b;
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+.print-project ul {
+  margin: 8px 0 10px;
+  padding-left: 20px;
+  color: #334155;
+}
+
+.print-project li {
+  margin: 4px 0;
+}
+
+.print-stack,
+.print-link {
+  color: #0f172a;
+  font-size: 12px;
+}
+
+.print-link a {
+  color: #0e7490;
+}
+
+.print-contact-bottom {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@page {
+  size: A4;
+  margin: 14mm;
+}
+
+@media print {
+  html,
+  body,
+  #root {
+    min-height: initial;
+  }
+
+  body {
+    background: #ffffff;
+  }
+
+  .print-cv-page {
+    min-height: initial;
+    padding: 0;
+    background: #ffffff;
+  }
+
+  .print-actions {
+    display: none;
+  }
+
+  .print-document {
+    max-width: none;
+    margin: 0;
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  .print-header,
+  .print-card,
+  .print-live-qr,
+  .print-avoid-break {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .print-section {
+    break-inside: auto;
+  }
+
+  .print-section h2 {
+    break-after: avoid-page;
+  }
+
+  .print-section h2 + .print-project-list,
+  .print-section h2 + .print-experience-list,
+  .print-section h2 + .print-skill-grid,
+  .print-section h2 + .print-contact-grid {
+    break-before: avoid-page;
+  }
+
+  .print-card {
+    background: #ffffff;
+  }
+}
