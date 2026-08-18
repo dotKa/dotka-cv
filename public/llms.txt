@@ -1,6 +1,6 @@
 # Yasin Karadeniz — Interactive CV
 
-Interactive CV and portfolio of Yasin Karadeniz, a full-stack developer building production-grade systems across real-time software, automation, event technology, backend architecture and deployment.
+Interactive CV and portfolio of Yasin Karadeniz, a full-stack developer building production-grade systems across real-time software, AI products, automation, event technology, backend architecture and deployment.
 
 ## Primary Pages
 

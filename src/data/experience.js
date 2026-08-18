@@ -5,7 +5,7 @@ export const experience = [
     date: "Mar 2023 — Present",
     location: "İstanbul, Türkiye · Remote",
     details:
-      "Building SaaS products, automation platforms and business tools. Responsible for product direction, full-stack development, system design and delivery."
+      "Building SaaS products, automation platforms and business tools, including the live AI products Kalfa and AgentMagnify. Responsible for product direction, full-stack development, system design and delivery."
   },
   {
     role: "Full Stack Developer",
@@ -49,7 +49,7 @@ const experienceTranslations = {
       date: "Mar 2023 — Günümüz",
       location: "İstanbul, Türkiye · Remote",
       details:
-        "SaaS ürünleri, otomasyon platformları ve iş araçları geliştiriyorum. Ürün yönü, full-stack geliştirme, sistem tasarımı ve teslim süreçlerinden sorumluyum."
+        "Yayında olan AI ürünleri Kalfa ve AgentMagnify dahil; SaaS ürünleri, otomasyon platformları ve iş araçları geliştiriyorum. Ürün yönü, full-stack geliştirme, sistem tasarımı ve teslim süreçlerinden sorumluyum."
     },
     {
       role: "Full Stack Developer",

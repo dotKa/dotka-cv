@@ -16,6 +16,22 @@ export const skillGroups = [
     ]
   },
   {
+    title: "AI & LLM Engineering",
+    note: "Shipping live AI products end to end: orchestration, agents, memory and observability.",
+    items: [
+      { name: "LLM Orchestration", logo: "LLM" },
+      { name: "AI Agents", logo: "AGT" },
+      { name: "Prompt / Context Engineering", logo: "CTX" },
+      { name: "Memory-aware Systems", logo: "MEM" },
+      { name: "OpenAI API", logo: "OAI" },
+      { name: "Claude API", logo: "CLD" },
+      { name: "Agent Observability", logo: "OBS" },
+      { name: "Evidence & Verification Flows", logo: "EVD" },
+      { name: "AI UX", logo: "AIX" },
+      { name: "Usage-based Billing", logo: "BIL" }
+    ]
+  },
+  {
     title: "Backend & Data",
     note: "Building systems that store, process, automate and expose data reliably.",
     items: [
@@ -93,24 +109,29 @@ const skillGroupTranslations = {
       items: skillGroups[0].items
     },
     {
+      title: "AI & LLM Engineering",
+      note: "Yayında olan AI ürünlerini uçtan uca geliştirme: orkestrasyon, agent'lar, memory ve observability.",
+      items: skillGroups[1].items
+    },
+    {
       title: "Backend & Data",
       note: "Veriyi güvenilir şekilde saklayan, işleyen, otomatikleştiren ve dışa açan sistemler geliştirme.",
-      items: skillGroups[1].items
+      items: skillGroups[2].items
     },
     {
       title: "DevOps & Deployment",
       note: "Ürünleri koddan çalışan altyapıya taşımakta rahat çalışma.",
-      items: skillGroups[2].items
+      items: skillGroups[3].items
     },
     {
       title: "Product & Delivery",
       note: "Know-how yalnızca kodla sınırlı değil; ürünü şekillendirebilir, geliştirebilir, yayına alabilir ve işletebilirim.",
-      items: skillGroups[3].items
+      items: skillGroups[4].items
     },
     {
       title: "Hardware / Event Tech",
       note: "Tiyatro, ışık sistemleri ve fiziksel cihazlardan gelen pratik production bilgisi.",
-      items: skillGroups[4].items
+      items: skillGroups[5].items
     }
   ]
 };

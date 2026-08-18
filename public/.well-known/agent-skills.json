@@ -19,6 +19,22 @@
       ]
     },
     {
+      "category": "AI & LLM Engineering",
+      "description": "Shipping live AI products end to end: orchestration, agents, memory and observability.",
+      "items": [
+        "LLM Orchestration",
+        "AI Agents",
+        "Prompt / Context Engineering",
+        "Memory-aware Systems",
+        "OpenAI API",
+        "Claude API",
+        "Agent Observability",
+        "Evidence & Verification Flows",
+        "AI UX",
+        "Usage-based Billing"
+      ]
+    },
+    {
       "category": "Backend & Data",
       "description": "Building systems that store, process, automate and expose data reliably.",
       "items": [

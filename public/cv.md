@@ -2,7 +2,7 @@
 
 Full Stack Developer / Product Engineer
 
-Interactive CV and portfolio of Yasin Karadeniz, a full-stack developer building production-grade systems across real-time software, automation, event technology, backend architecture and deployment.
+Interactive CV and portfolio of Yasin Karadeniz, a full-stack developer building production-grade systems across real-time software, AI products, automation, event technology, backend architecture and deployment.
 
 ## Contact
 
@@ -17,7 +17,7 @@ Interactive CV and portfolio of Yasin Karadeniz, a full-stack developer building
 
 - Date: Mar 2023 — Present
 - Location: İstanbul, Türkiye · Remote
-- Building SaaS products, automation platforms and business tools. Responsible for product direction, full-stack development, system design and delivery.
+- Building SaaS products, automation platforms and business tools, including the live AI products Kalfa and AgentMagnify. Responsible for product direction, full-stack development, system design and delivery.
 
 ### Full Stack Developer — GridStudio
 
@@ -202,6 +202,21 @@ High hands-on ability across product code, frontend, backend and realtime flows.
 - Realtime Systems
 - Component UI
 - Frontend Architecture
+
+### AI & LLM Engineering
+
+Shipping live AI products end to end: orchestration, agents, memory and observability.
+
+- LLM Orchestration
+- AI Agents
+- Prompt / Context Engineering
+- Memory-aware Systems
+- OpenAI API
+- Claude API
+- Agent Observability
+- Evidence & Verification Flows
+- AI UX
+- Usage-based Billing
 
 ### Backend & Data
 

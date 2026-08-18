@@ -2,7 +2,7 @@
 
 Full Stack Developer / Product Engineer
 
-Yasin Karadeniz'in interaktif CV ve portfolyosu; gerçek zamanlı yazılım, otomasyon, event teknolojisi, backend mimarisi ve deployment alanlarında production-grade sistemler geliştiren full-stack developer.
+Yasin Karadeniz'in interaktif CV ve portfolyosu; gerçek zamanlı yazılım, AI ürünleri, otomasyon, event teknolojisi, backend mimarisi ve deployment alanlarında production-grade sistemler geliştiren full-stack developer.
 
 ## İletişim
 
@@ -17,7 +17,7 @@ Yasin Karadeniz'in interaktif CV ve portfolyosu; gerçek zamanlı yazılım, oto
 
 - Tarih: Mar 2023 — Günümüz
 - Lokasyon: İstanbul, Türkiye · Remote
-- SaaS ürünleri, otomasyon platformları ve iş araçları geliştiriyorum. Ürün yönü, full-stack geliştirme, sistem tasarımı ve teslim süreçlerinden sorumluyum.
+- Yayında olan AI ürünleri Kalfa ve AgentMagnify dahil; SaaS ürünleri, otomasyon platformları ve iş araçları geliştiriyorum. Ürün yönü, full-stack geliştirme, sistem tasarımı ve teslim süreçlerinden sorumluyum.
 
 ### Full Stack Developer — GridStudio
 
@@ -202,6 +202,21 @@ Stack: Puppeteer, Node.js, Pipelines, Bots, CRM
 - Realtime Systems
 - Component UI
 - Frontend Architecture
+
+### AI & LLM Engineering
+
+Yayında olan AI ürünlerini uçtan uca geliştirme: orkestrasyon, agent'lar, memory ve observability.
+
+- LLM Orchestration
+- AI Agents
+- Prompt / Context Engineering
+- Memory-aware Systems
+- OpenAI API
+- Claude API
+- Agent Observability
+- Evidence & Verification Flows
+- AI UX
+- Usage-based Billing
 
 ### Backend & Data
 

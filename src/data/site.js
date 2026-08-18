@@ -2,7 +2,7 @@ export const siteMeta = {
   name: "Yasin Karadeniz",
   title: "Yasin Karadeniz — Interactive CV",
   description:
-    "Interactive CV and portfolio of Yasin Karadeniz, a full-stack developer building production-grade systems across real-time software, automation, event technology, backend architecture and deployment.",
+    "Interactive CV and portfolio of Yasin Karadeniz, a full-stack developer building production-grade systems across real-time software, AI products, automation, event technology, backend architecture and deployment.",
   role: "Full Stack Developer / Product Engineer",
   email: "info@dotka.xyz",
   phone: "+90 531 813 62 73",
@@ -15,7 +15,7 @@ const siteMetaTranslations = {
   tr: {
     title: "Yasin Karadeniz — Interactive CV",
     description:
-      "Yasin Karadeniz'in interaktif CV ve portfolyosu; gerçek zamanlı yazılım, otomasyon, event teknolojisi, backend mimarisi ve deployment alanlarında production-grade sistemler geliştiren full-stack developer.",
+      "Yasin Karadeniz'in interaktif CV ve portfolyosu; gerçek zamanlı yazılım, AI ürünleri, otomasyon, event teknolojisi, backend mimarisi ve deployment alanlarında production-grade sistemler geliştiren full-stack developer.",
     role: "Full Stack Developer / Product Engineer",
     location: "Türkiye"
   }

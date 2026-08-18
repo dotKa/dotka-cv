@@ -12,6 +12,8 @@ export function runDataChecks() {
   if (!scenes.includes("about")) errors.push("About scene missing.");
   if (!projects.some((p) => p.id === "relackout")) errors.push("Relackout project missing.");
   if (!projects.some((p) => p.id === "usb-dmx")) errors.push("USB-DMX project missing.");
+  if (!projects.some((p) => p.id === "kalfa")) errors.push("Kalfa project missing.");
+  if (!projects.some((p) => p.id === "agentmagnify")) errors.push("AgentMagnify project missing.");
   if (!projects.some((p) => p.id === "quiz-night")) errors.push("Quiz Night project missing.");
   if (!projects.some((p) => p.id === "tickentra")) errors.push("Tickentra project missing.");
   if (!skillGroups.some((group) => group.title === "DevOps & Deployment")) errors.push("DevOps skill group missing.");
