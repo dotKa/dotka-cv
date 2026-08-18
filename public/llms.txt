@@ -16,6 +16,8 @@ Interactive CV and portfolio of Yasin Karadeniz, a full-stack developer building
 
 - [Relackout](https://cv.dotka.xyz/projects/relackout): Production-ready real-time lighting control software for live events.
 - [Relackout USB-DMX Hardware](https://cv.dotka.xyz/projects/usb-dmx): Physical USB-DMX hardware produced for Relackout workflows.
+- [Kalfa](https://cv.dotka.xyz/projects/kalfa): Live AI studio for artists: playwrights, screenwriters, novelists, poets and lyricists.
+- [AgentMagnify](https://cv.dotka.xyz/projects/agentmagnify): Live monitoring platform that verifies what AI coding agents actually did.
 - [Content Generator & Distributor](https://cv.dotka.xyz/projects/content-generator): Content generation and publishing workflow platform.
 - [Library Management System](https://cv.dotka.xyz/projects/library): Multi-tenant management system for small libraries.
 - [Tickentra](https://cv.dotka.xyz/projects/tickentra): Ticketing and event infrastructure concept.

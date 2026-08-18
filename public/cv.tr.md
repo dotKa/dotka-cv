@@ -77,6 +77,40 @@ Stack: Electron, JavaScript, Realtime, DMX, Art-Net, Product Engineering
 
 Stack: RS485, DMX, USB-DMX, 3D Printing, Hardware, Production
 
+### Kalfa
+
+- Tip: Ürün / AI Stüdyo / SaaS
+- Yıl: 2026 — Günümüz
+- URL: https://cv.dotka.xyz/projects/kalfa
+- Kalfa; tiyatro oyunu, senaryo, öykü, şiir ve şarkı sözü üzerinde çalışan yaratıcı profesyoneller için geliştirilen, yayında ve aktif kullanımda olan bir AI çalışma alanıdır. Stateless bir chatbot yerine eserin bütününü anlayan memory-aware bir stüdyodur; her önerinin arkasındaki gerekçeyi gösterir ve ilk fikirden prodüksiyona kadar kontrolü sanatçıda tutar.
+
+Öne Çıkanlar:
+- Aktif kullanıcıları ve abonelik + kullanım bazlı fiyatlandırması olan yayında bir ürün
+- Tek prompt değil, eserin tamamının bağlamını tutan memory-aware AI
+- Yazım desteği, dramaturji analizi, ışık ve sahne tasarımı modülleri
+- Creation Mode ile AI müdahale seviyesi asistan'dan co-creator'a ayarlanabilir
+- Decision Log yaratıcı kararları gerekçeleriyle birlikte kaydeder
+- Kullanıcı içeriğinin modele eğitim için kullanılmayacağına dair sözleşmesel garanti ve GDPR uyumu
+
+Stack: AI, LLM Orchestration, SaaS, Multi-tenant, Product Engineering, UX
+
+### AgentMagnify
+
+- Tip: Ürün / Developer Tooling / AI Agent Observability
+- Yıl: 2026 — Günümüz
+- URL: https://cv.dotka.xyz/projects/agentmagnify
+- AgentMagnify; geliştiricilere AI kodlama agent'larının çalışmaları üzerinde gerçek görünürlük sağlayan, yayında ve aktif kullanımda olan bir platformdur. Her proje için tekrar oynatılabilir, append-only bir kayıt oluşturur ve agent'ların iddia ettiklerini kanıtların — testler, build'ler, ekran görüntüleri — gerçekten desteklediklerinden ayırarak agent aktivitesi ile gerçek ilerleme arasındaki güven boşluğunu kapatır.
+
+Öne Çıkanlar:
+- Claude Code, Codex, Cursor ve her bash ortamıyla entegre yayında bir ürün
+- Reported / Roadmap / Verified metrikleri iddiaları kanıtlardan ayrı tutar
+- Append-only event'ler üzerine kurulu tekrar oynatılabilir proje geçmişi
+- İddia–kanıt çelişkilerini tespit eden bağımsız doğrulama geçişi
+- Offline-first event kuyruğu ve npx ile tek komutla kurulum
+- Açık kaynak (MIT) agent skill'i, ücretsiz ve ücretli SaaS planları
+
+Stack: AI Agents, Node.js, CLI, Event Sourcing, Observability, SaaS
+
 ### Content Generator & Distributor
 
 - Tip: Otomasyon / Yayınlama

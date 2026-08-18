@@ -37,6 +37,46 @@ export const projects = [
     unlockHint: "USB-DMX hardware viewed"
   },
   {
+    id: "kalfa",
+    title: "Kalfa",
+    type: "Product / AI Studio / SaaS",
+    year: "2026 — Present",
+    short: "Live AI studio for artists: playwrights, screenwriters, novelists, poets and lyricists.",
+    story:
+      "Kalfa is a live, actively used AI workspace built for creative professionals working on theatre plays, screenplays, stories, poetry and lyrics. Instead of a stateless chatbot, it is a memory-aware studio that understands the whole work, explains the reasoning behind every suggestion and keeps the artist in control from first idea to production.",
+    points: [
+      "Live product with active users and subscription + usage-based pricing",
+      "Memory-aware AI that keeps context of the entire work, not single prompts",
+      "Modules for writing support, dramaturgy analysis, lighting and stage design",
+      "Creation Mode lets artists tune AI involvement from assistant to co-creator",
+      "Decision Log records creative choices with their reasoning",
+      "Contractual no-training guarantee on user content and GDPR compliance"
+    ],
+    stack: ["AI", "LLM Orchestration", "SaaS", "Multi-tenant", "Product Engineering", "UX"],
+    link: "https://www.kalfa.art",
+    unlockHint: "Kalfa viewed"
+  },
+  {
+    id: "agentmagnify",
+    title: "AgentMagnify",
+    type: "Product / Developer Tooling / AI Agent Observability",
+    year: "2026 — Present",
+    short: "Live monitoring platform that verifies what AI coding agents actually did.",
+    story:
+      "AgentMagnify is a live, actively used platform that gives developers real visibility into AI coding agent work. It builds a replayable, append-only record of every project and separates what agents claim from what evidence — tests, builds, screenshots — actually supports, closing the trust gap between agent activity and real progress.",
+    points: [
+      "Live product integrated with Claude Code, Codex, Cursor and any bash environment",
+      "Reported / Roadmap / Verified metrics keep claims separate from evidence",
+      "Replayable project history built on append-only events",
+      "Independent verification pass that disputes claim–evidence contradictions",
+      "Offline-first event queue and single-command install via npx",
+      "Open-source (MIT) agent skill with free and paid SaaS tiers"
+    ],
+    stack: ["AI Agents", "Node.js", "CLI", "Event Sourcing", "Observability", "SaaS"],
+    link: "https://agentmagnify.com",
+    unlockHint: "AgentMagnify viewed"
+  },
+  {
     id: "content-generator",
     title: "Content Generator & Distributor",
     type: "Automation / Publishing",
@@ -154,6 +194,38 @@ const projectTranslations = {
         "Yazılım mühendisliği, fiziksel cihaz tasarımı ve gerçek dünya testlerini birleştirir"
       ],
       unlockHint: "USB-DMX donanımı görüntülendi"
+    },
+    kalfa: {
+      type: "Ürün / AI Stüdyo / SaaS",
+      year: "2026 — Günümüz",
+      short: "Sanatçılar için yayında olan AI stüdyosu: oyun yazarları, senaristler, romancılar, şairler ve söz yazarları.",
+      story:
+        "Kalfa; tiyatro oyunu, senaryo, öykü, şiir ve şarkı sözü üzerinde çalışan yaratıcı profesyoneller için geliştirilen, yayında ve aktif kullanımda olan bir AI çalışma alanıdır. Stateless bir chatbot yerine eserin bütününü anlayan memory-aware bir stüdyodur; her önerinin arkasındaki gerekçeyi gösterir ve ilk fikirden prodüksiyona kadar kontrolü sanatçıda tutar.",
+      points: [
+        "Aktif kullanıcıları ve abonelik + kullanım bazlı fiyatlandırması olan yayında bir ürün",
+        "Tek prompt değil, eserin tamamının bağlamını tutan memory-aware AI",
+        "Yazım desteği, dramaturji analizi, ışık ve sahne tasarımı modülleri",
+        "Creation Mode ile AI müdahale seviyesi asistan'dan co-creator'a ayarlanabilir",
+        "Decision Log yaratıcı kararları gerekçeleriyle birlikte kaydeder",
+        "Kullanıcı içeriğinin modele eğitim için kullanılmayacağına dair sözleşmesel garanti ve GDPR uyumu"
+      ],
+      unlockHint: "Kalfa görüntülendi"
+    },
+    agentmagnify: {
+      type: "Ürün / Developer Tooling / AI Agent Observability",
+      year: "2026 — Günümüz",
+      short: "AI kodlama agent'larının gerçekte ne yaptığını doğrulayan yayında bir izleme platformu.",
+      story:
+        "AgentMagnify; geliştiricilere AI kodlama agent'larının çalışmaları üzerinde gerçek görünürlük sağlayan, yayında ve aktif kullanımda olan bir platformdur. Her proje için tekrar oynatılabilir, append-only bir kayıt oluşturur ve agent'ların iddia ettiklerini kanıtların — testler, build'ler, ekran görüntüleri — gerçekten desteklediklerinden ayırarak agent aktivitesi ile gerçek ilerleme arasındaki güven boşluğunu kapatır.",
+      points: [
+        "Claude Code, Codex, Cursor ve her bash ortamıyla entegre yayında bir ürün",
+        "Reported / Roadmap / Verified metrikleri iddiaları kanıtlardan ayrı tutar",
+        "Append-only event'ler üzerine kurulu tekrar oynatılabilir proje geçmişi",
+        "İddia–kanıt çelişkilerini tespit eden bağımsız doğrulama geçişi",
+        "Offline-first event kuyruğu ve npx ile tek komutla kurulum",
+        "Açık kaynak (MIT) agent skill'i, ücretsiz ve ücretli SaaS planları"
+      ],
+      unlockHint: "AgentMagnify görüntülendi"
     },
     "content-generator": {
       type: "Otomasyon / Yayınlama",

@@ -77,6 +77,40 @@ Highlights:
 
 Stack: RS485, DMX, USB-DMX, 3D Printing, Hardware, Production
 
+### Kalfa
+
+- Type: Product / AI Studio / SaaS
+- Year: 2026 — Present
+- URL: https://cv.dotka.xyz/projects/kalfa
+- Kalfa is a live, actively used AI workspace built for creative professionals working on theatre plays, screenplays, stories, poetry and lyrics. Instead of a stateless chatbot, it is a memory-aware studio that understands the whole work, explains the reasoning behind every suggestion and keeps the artist in control from first idea to production.
+
+Highlights:
+- Live product with active users and subscription + usage-based pricing
+- Memory-aware AI that keeps context of the entire work, not single prompts
+- Modules for writing support, dramaturgy analysis, lighting and stage design
+- Creation Mode lets artists tune AI involvement from assistant to co-creator
+- Decision Log records creative choices with their reasoning
+- Contractual no-training guarantee on user content and GDPR compliance
+
+Stack: AI, LLM Orchestration, SaaS, Multi-tenant, Product Engineering, UX
+
+### AgentMagnify
+
+- Type: Product / Developer Tooling / AI Agent Observability
+- Year: 2026 — Present
+- URL: https://cv.dotka.xyz/projects/agentmagnify
+- AgentMagnify is a live, actively used platform that gives developers real visibility into AI coding agent work. It builds a replayable, append-only record of every project and separates what agents claim from what evidence — tests, builds, screenshots — actually supports, closing the trust gap between agent activity and real progress.
+
+Highlights:
+- Live product integrated with Claude Code, Codex, Cursor and any bash environment
+- Reported / Roadmap / Verified metrics keep claims separate from evidence
+- Replayable project history built on append-only events
+- Independent verification pass that disputes claim–evidence contradictions
+- Offline-first event queue and single-command install via npx
+- Open-source (MIT) agent skill with free and paid SaaS tiers
+
+Stack: AI Agents, Node.js, CLI, Event Sourcing, Observability, SaaS
+
 ### Content Generator & Distributor
 
 - Type: Automation / Publishing
