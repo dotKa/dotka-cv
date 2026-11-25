@@ -75,6 +75,7 @@ export const messages = {
       projectsButton: "projects",
       exploreAnother: "explore another",
       visitProject: "visit project",
+      viewSource: "view source on github",
       highlight: "highlight",
       stack: "Stack",
       projectLink: "Project link"
@@ -184,6 +185,7 @@ export const messages = {
       projectsButton: "projeler",
       exploreAnother: "başka keşfet",
       visitProject: "projeyi ziyaret et",
+      viewSource: "kaynak kodu github'da",
       highlight: "öne çıkan",
       stack: "Stack",
       projectLink: "Proje linki"

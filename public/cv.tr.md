@@ -17,7 +17,7 @@ Yasin Karadeniz'in interaktif CV ve portfolyosu; gerçek zamanlı yazılım, AI 
 
 - Tarih: Mar 2023 — Günümüz
 - Lokasyon: İstanbul, Türkiye · Remote
-- Yayında olan AI ürünleri Kalfa ve AgentMagnify dahil; SaaS ürünleri, otomasyon platformları ve iş araçları geliştiriyorum. Ürün yönü, full-stack geliştirme, sistem tasarımı ve teslim süreçlerinden sorumluyum.
+- Yayında olan AI ürünleri Kalfa ve AgentMagnify ile Remyral ve ArtNet 2 USB gibi açık kaynak projeler dahil; SaaS ürünleri, otomasyon platformları ve iş araçları geliştiriyorum. Ürün yönü, full-stack geliştirme, sistem tasarımı ve teslim süreçlerinden sorumluyum.
 
 ### Full Stack Developer — GridStudio
 
@@ -57,9 +57,11 @@ Yasin Karadeniz'in interaktif CV ve portfolyosu; gerçek zamanlı yazılım, AI 
 - DMX512 ve Art-Net tabanlı ışık kontrolü
 - Scene, cue stack ve canlı operasyon iş akışları
 - Fader, buton ve gruplardan oluşan özel mixer layout'u
+- 2.8 sürümü: her DMX karesinde hesaplanan canlı efektler; truss, LED şerit ve pixel matrix destekli 3D sahne görünümü
+- Komut paleti, armatür paletleri, GDTF içe/dışa aktarma ve QLC+ içe aktarma
 - Sadelik, hız, düşük gecikmeli kontrol ve pratik sahne kullanımı etrafında geliştirildi
 
-Stack: Electron, JavaScript, Realtime, DMX, Art-Net, Product Engineering
+Stack: Electron, React, Three.js, Realtime, DMX, Art-Net, sACN, Product Engineering
 
 ### Relackout USB-DMX Hardware
 
@@ -76,6 +78,23 @@ Stack: Electron, JavaScript, Realtime, DMX, Art-Net, Product Engineering
 - Yazılım mühendisliği, fiziksel cihaz tasarımı ve gerçek dünya testlerini birleştirir
 
 Stack: RS485, DMX, USB-DMX, 3D Printing, Hardware, Production
+
+### ArtNet 2 USB
+
+- Tip: Açık Kaynak / Sahne Teknolojisi / Masaüstü & CLI
+- Yıl: 2026 — Günümüz
+- URL: https://cv.dotka.xyz/projects/artnet2usb
+- ArtNet 2 USB; herhangi bir ışık yazılımından gelen Art-Net sinyalini alıp Enttec DMX USB Pro ve Open DMX / FTDI gibi USB DMX arayüzlerine aktaran ücretsiz ve odaklı bir köprüdür. Aynı routing motorunu ve config dosyasını paylaşan bir masaüstü uygulaması ve headless bir CLI olarak gelir; masada da, truss arkasındaki bir Raspberry Pi'de de çalışır.
+
+Öne Çıkanlar:
+- MIT lisanslı açık kaynak; hesap gerektirmez, Relackout dışındaki konsollarla da çalışır
+- Pasif Art-Net keşfi ve ArtPoll node taraması, canlı 512 kanal önizleme
+- Görsel routing tablosu: universe → USB cihaz, protokol ve yenileme hızı
+- Cihazlar donanım kimliğiyle hatırlanır; port değişse de route'lar korunur
+- Raspberry Pi ve backstage sunucuları için headless CLI; taşınabilir config
+- Windows, macOS ve Linux sürümleri; 10 dilde README
+
+Stack: Electron, TypeScript, Node.js, CLI, Art-Net, DMX, Open Source
 
 ### Kalfa
 
@@ -110,6 +129,23 @@ Stack: AI, LLM Orchestration, SaaS, Multi-tenant, Product Engineering, UX
 - Açık kaynak (MIT) agent skill'i, ücretsiz ve ücretli SaaS planları
 
 Stack: AI Agents, Node.js, CLI, Event Sourcing, Observability, SaaS
+
+### Remyral
+
+- Tip: Açık Kaynak / Developer Tooling / AI Agent Orkestrasyonu
+- Yıl: 2026 — Günümüz
+- URL: https://cv.dotka.xyz/projects/remyral
+- Remyral, Apache-2.0 lisansıyla açık kaynak olarak yayımlanan, kodlama agent'ları için self-hosted bir kontrol düzlemidir. Tek bir sunucuda web konsolu ve API çalışır; kendi makinelerinizdeki worker'lar sunucuya dışarı doğru bağlanır ve Claude Code, Codex, Pi veya OpenCode işlerini kapsamı daraltılmış, sandbox'lı çalışma alanlarında yürütür. Konsol işleri makine filosuna dağıtır, kalıcı iş geçmişi tutar, hassas adımlardan önce insan onayı ister ve sonuçlardan pull request, deploy ve rapor üretir.
+
+Öne Çıkanlar:
+- Apache-2.0 lisanslı açık kaynak; Docker ile tek Linux sunucuda self-hosted
+- Linux (Raspberry Pi dahil), macOS ve Windows worker'ları WSS üzerinden dışarı doğru bağlanır
+- Claude Code, Codex, Pi ve OpenCode'u sürümlü runtime adapter'larıyla iş başına sandbox'ta çalıştırır
+- Sohbetten iş taslağı, fazlı planlar ve agent adımları ile onaylardan oluşan workflow editörü
+- Merge ve deploy öncesi insan onayı, kalıcı iş geçmişi ve canlı aktivite kaydı
+- Fastify API, React konsol, PostgreSQL, Redis ve Zod ile doğrulanan worker protokolü
+
+Stack: TypeScript, Fastify, React, PostgreSQL, Redis, AI Agents, Open Source
 
 ### Content Generator & Distributor
 

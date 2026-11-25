@@ -16,8 +16,10 @@ Yasin Karadeniz'in interaktif CV ve portfolyosu; gerçek zamanlı yazılım, AI 
 
 - [Relackout](https://cv.dotka.xyz/projects/relackout): Canlı etkinlikler için production-ready gerçek zamanlı ışık kontrol yazılımı.
 - [Relackout USB-DMX Hardware](https://cv.dotka.xyz/projects/usb-dmx): Relackout iş akışları için üretilen fiziksel USB-DMX donanımı.
+- [ArtNet 2 USB](https://cv.dotka.xyz/projects/artnet2usb): Masaüstü arayüzü ve headless CLI'ı olan ücretsiz, açık kaynak (MIT) Art-Net → USB DMX köprüsü.
 - [Kalfa](https://cv.dotka.xyz/projects/kalfa): Sanatçılar için yayında olan AI stüdyosu: oyun yazarları, senaristler, romancılar, şairler ve söz yazarları.
 - [AgentMagnify](https://cv.dotka.xyz/projects/agentmagnify): AI kodlama agent'larının gerçekte ne yaptığını doğrulayan yayında bir izleme platformu.
+- [Remyral](https://cv.dotka.xyz/projects/remyral): Kodlama agent'ları için açık kaynak (Apache-2.0), self-hosted kontrol düzlemi.
 - [Content Generator & Distributor](https://cv.dotka.xyz/projects/content-generator): İçerik üretimi ve yayınlama iş akışları için platform.
 - [Library Management System](https://cv.dotka.xyz/projects/library): Küçük kütüphaneler için multi-tenant yönetim sistemi.
 - [Tickentra](https://cv.dotka.xyz/projects/tickentra): Biletleme ve event altyapısı konsepti.

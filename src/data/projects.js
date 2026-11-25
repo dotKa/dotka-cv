@@ -12,9 +12,11 @@ export const projects = [
       "DMX512 and Art-Net based lighting control",
       "Scene, cue stack and live operation workflows",
       "Custom mixer layout with faders, buttons and groups",
+      "Version 2.8: live effects calculated per DMX frame, a 3D stage view with trusses, LED strips and pixel matrices",
+      "Command palette, fixture palettes, GDTF import/export and QLC+ import",
       "Built around simplicity, speed, low-latency control and practical stage usage"
     ],
-    stack: ["Electron", "JavaScript", "Realtime", "DMX", "Art-Net", "Product Engineering"],
+    stack: ["Electron", "React", "Three.js", "Realtime", "DMX", "Art-Net", "sACN", "Product Engineering"],
     link: "https://relackout.com",
     unlockHint: "Relackout viewed"
   },
@@ -35,6 +37,27 @@ export const projects = [
     ],
     stack: ["RS485", "DMX", "USB-DMX", "3D Printing", "Hardware", "Production"],
     unlockHint: "USB-DMX hardware viewed"
+  },
+  {
+    id: "artnet2usb",
+    title: "ArtNet 2 USB",
+    type: "Open Source / Stage Technology / Desktop & CLI",
+    year: "2026 — Present",
+    short: "Free, open-source (MIT) Art-Net → USB DMX bridge with a desktop GUI and a headless CLI.",
+    story:
+      "ArtNet 2 USB is a free, focused bridge that receives Art-Net from any lighting software and pushes it out to USB DMX interfaces such as the Enttec DMX USB Pro and Open DMX / FTDI dongles. It ships as a desktop app and as a headless CLI that share the same routing engine and config file, so it runs just as well on a Raspberry Pi behind a truss as on a desk.",
+    points: [
+      "Open source under MIT, no account required, works with consoles other than Relackout",
+      "Passive Art-Net discovery plus ArtPoll node scanning, with a live 512-channel preview",
+      "Visual routing table: universe → USB device, protocol and refresh rate",
+      "Devices remembered by hardware identity, so routes survive replugging",
+      "Headless CLI for Raspberry Pi and backstage servers; portable config",
+      "Windows, macOS and Linux builds; README in 10 languages"
+    ],
+    stack: ["Electron", "TypeScript", "Node.js", "CLI", "Art-Net", "DMX", "Open Source"],
+    link: "https://relackout.com/usb-dmx",
+    repo: "https://github.com/remanatech/artnet2usb",
+    unlockHint: "ArtNet 2 USB viewed"
   },
   {
     id: "kalfa",
@@ -74,7 +97,29 @@ export const projects = [
     ],
     stack: ["AI Agents", "Node.js", "CLI", "Event Sourcing", "Observability", "SaaS"],
     link: "https://agentmagnify.com",
+    repo: "https://github.com/remanatech/agentmagnify-skill",
     unlockHint: "AgentMagnify viewed"
+  },
+  {
+    id: "remyral",
+    title: "Remyral",
+    type: "Open Source / Developer Tooling / AI Agent Orchestration",
+    year: "2026 — Present",
+    short: "Open-source (Apache-2.0), self-hosted control plane for coding agents.",
+    story:
+      "Remyral is a self-hosted control plane for coding agents, released as open source under Apache-2.0. One server runs the web console and API; workers on your own machines connect outbound to it and run Claude Code, Codex, Pi or OpenCode jobs in scoped, sandboxed workspaces. The console schedules work across the fleet, keeps a durable job history, asks a person for approval before sensitive actions and opens pull requests, deploys and reports from the results.",
+    points: [
+      "Open source under Apache-2.0, self-hosted on a single Linux host with Docker",
+      "Workers on Linux (including Raspberry Pi), macOS and Windows connect outbound over WSS",
+      "Runs Claude Code, Codex, Pi and OpenCode through versioned runtime adapters in per-job sandboxes",
+      "Chat-to-job drafts, phased plans and a workflow editor of agent steps and approvals",
+      "Human approval before merges and deploys, with a durable job history and live activity log",
+      "Fastify API, React console, PostgreSQL, Redis and a Zod-validated worker protocol"
+    ],
+    stack: ["TypeScript", "Fastify", "React", "PostgreSQL", "Redis", "AI Agents", "Open Source"],
+    link: "https://remyral.com",
+    repo: "https://github.com/dotKa/remyral",
+    unlockHint: "Remyral viewed"
   },
   {
     id: "content-generator",
@@ -176,6 +221,8 @@ const projectTranslations = {
         "DMX512 ve Art-Net tabanlı ışık kontrolü",
         "Scene, cue stack ve canlı operasyon iş akışları",
         "Fader, buton ve gruplardan oluşan özel mixer layout'u",
+        "2.8 sürümü: her DMX karesinde hesaplanan canlı efektler; truss, LED şerit ve pixel matrix destekli 3D sahne görünümü",
+        "Komut paleti, armatür paletleri, GDTF içe/dışa aktarma ve QLC+ içe aktarma",
         "Sadelik, hız, düşük gecikmeli kontrol ve pratik sahne kullanımı etrafında geliştirildi"
       ],
       unlockHint: "Relackout görüntülendi"
@@ -194,6 +241,22 @@ const projectTranslations = {
         "Yazılım mühendisliği, fiziksel cihaz tasarımı ve gerçek dünya testlerini birleştirir"
       ],
       unlockHint: "USB-DMX donanımı görüntülendi"
+    },
+    artnet2usb: {
+      type: "Açık Kaynak / Sahne Teknolojisi / Masaüstü & CLI",
+      year: "2026 — Günümüz",
+      short: "Masaüstü arayüzü ve headless CLI'ı olan ücretsiz, açık kaynak (MIT) Art-Net → USB DMX köprüsü.",
+      story:
+        "ArtNet 2 USB; herhangi bir ışık yazılımından gelen Art-Net sinyalini alıp Enttec DMX USB Pro ve Open DMX / FTDI gibi USB DMX arayüzlerine aktaran ücretsiz ve odaklı bir köprüdür. Aynı routing motorunu ve config dosyasını paylaşan bir masaüstü uygulaması ve headless bir CLI olarak gelir; masada da, truss arkasındaki bir Raspberry Pi'de de çalışır.",
+      points: [
+        "MIT lisanslı açık kaynak; hesap gerektirmez, Relackout dışındaki konsollarla da çalışır",
+        "Pasif Art-Net keşfi ve ArtPoll node taraması, canlı 512 kanal önizleme",
+        "Görsel routing tablosu: universe → USB cihaz, protokol ve yenileme hızı",
+        "Cihazlar donanım kimliğiyle hatırlanır; port değişse de route'lar korunur",
+        "Raspberry Pi ve backstage sunucuları için headless CLI; taşınabilir config",
+        "Windows, macOS ve Linux sürümleri; 10 dilde README"
+      ],
+      unlockHint: "ArtNet 2 USB görüntülendi"
     },
     kalfa: {
       type: "Ürün / AI Stüdyo / SaaS",
@@ -226,6 +289,22 @@ const projectTranslations = {
         "Açık kaynak (MIT) agent skill'i, ücretsiz ve ücretli SaaS planları"
       ],
       unlockHint: "AgentMagnify görüntülendi"
+    },
+    remyral: {
+      type: "Açık Kaynak / Developer Tooling / AI Agent Orkestrasyonu",
+      year: "2026 — Günümüz",
+      short: "Kodlama agent'ları için açık kaynak (Apache-2.0), self-hosted kontrol düzlemi.",
+      story:
+        "Remyral, Apache-2.0 lisansıyla açık kaynak olarak yayımlanan, kodlama agent'ları için self-hosted bir kontrol düzlemidir. Tek bir sunucuda web konsolu ve API çalışır; kendi makinelerinizdeki worker'lar sunucuya dışarı doğru bağlanır ve Claude Code, Codex, Pi veya OpenCode işlerini kapsamı daraltılmış, sandbox'lı çalışma alanlarında yürütür. Konsol işleri makine filosuna dağıtır, kalıcı iş geçmişi tutar, hassas adımlardan önce insan onayı ister ve sonuçlardan pull request, deploy ve rapor üretir.",
+      points: [
+        "Apache-2.0 lisanslı açık kaynak; Docker ile tek Linux sunucuda self-hosted",
+        "Linux (Raspberry Pi dahil), macOS ve Windows worker'ları WSS üzerinden dışarı doğru bağlanır",
+        "Claude Code, Codex, Pi ve OpenCode'u sürümlü runtime adapter'larıyla iş başına sandbox'ta çalıştırır",
+        "Sohbetten iş taslağı, fazlı planlar ve agent adımları ile onaylardan oluşan workflow editörü",
+        "Merge ve deploy öncesi insan onayı, kalıcı iş geçmişi ve canlı aktivite kaydı",
+        "Fastify API, React konsol, PostgreSQL, Redis ve Zod ile doğrulanan worker protokolü"
+      ],
+      unlockHint: "Remyral görüntülendi"
     },
     "content-generator": {
       type: "Otomasyon / Yayınlama",

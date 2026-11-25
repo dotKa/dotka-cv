@@ -17,7 +17,7 @@ Interactive CV and portfolio of Yasin Karadeniz, a full-stack developer building
 
 - Date: Mar 2023 — Present
 - Location: İstanbul, Türkiye · Remote
-- Building SaaS products, automation platforms and business tools, including the live AI products Kalfa and AgentMagnify. Responsible for product direction, full-stack development, system design and delivery.
+- Building SaaS products, automation platforms and business tools, including the live AI products Kalfa and AgentMagnify and open-source projects such as Remyral and ArtNet 2 USB. Responsible for product direction, full-stack development, system design and delivery.
 
 ### Full Stack Developer — GridStudio
 
@@ -57,9 +57,11 @@ Highlights:
 - DMX512 and Art-Net based lighting control
 - Scene, cue stack and live operation workflows
 - Custom mixer layout with faders, buttons and groups
+- Version 2.8: live effects calculated per DMX frame, a 3D stage view with trusses, LED strips and pixel matrices
+- Command palette, fixture palettes, GDTF import/export and QLC+ import
 - Built around simplicity, speed, low-latency control and practical stage usage
 
-Stack: Electron, JavaScript, Realtime, DMX, Art-Net, Product Engineering
+Stack: Electron, React, Three.js, Realtime, DMX, Art-Net, sACN, Product Engineering
 
 ### Relackout USB-DMX Hardware
 
@@ -76,6 +78,23 @@ Highlights:
 - Combines software engineering, physical device design and real-world testing
 
 Stack: RS485, DMX, USB-DMX, 3D Printing, Hardware, Production
+
+### ArtNet 2 USB
+
+- Type: Open Source / Stage Technology / Desktop & CLI
+- Year: 2026 — Present
+- URL: https://cv.dotka.xyz/projects/artnet2usb
+- ArtNet 2 USB is a free, focused bridge that receives Art-Net from any lighting software and pushes it out to USB DMX interfaces such as the Enttec DMX USB Pro and Open DMX / FTDI dongles. It ships as a desktop app and as a headless CLI that share the same routing engine and config file, so it runs just as well on a Raspberry Pi behind a truss as on a desk.
+
+Highlights:
+- Open source under MIT, no account required, works with consoles other than Relackout
+- Passive Art-Net discovery plus ArtPoll node scanning, with a live 512-channel preview
+- Visual routing table: universe → USB device, protocol and refresh rate
+- Devices remembered by hardware identity, so routes survive replugging
+- Headless CLI for Raspberry Pi and backstage servers; portable config
+- Windows, macOS and Linux builds; README in 10 languages
+
+Stack: Electron, TypeScript, Node.js, CLI, Art-Net, DMX, Open Source
 
 ### Kalfa
 
@@ -110,6 +129,23 @@ Highlights:
 - Open-source (MIT) agent skill with free and paid SaaS tiers
 
 Stack: AI Agents, Node.js, CLI, Event Sourcing, Observability, SaaS
+
+### Remyral
+
+- Type: Open Source / Developer Tooling / AI Agent Orchestration
+- Year: 2026 — Present
+- URL: https://cv.dotka.xyz/projects/remyral
+- Remyral is a self-hosted control plane for coding agents, released as open source under Apache-2.0. One server runs the web console and API; workers on your own machines connect outbound to it and run Claude Code, Codex, Pi or OpenCode jobs in scoped, sandboxed workspaces. The console schedules work across the fleet, keeps a durable job history, asks a person for approval before sensitive actions and opens pull requests, deploys and reports from the results.
+
+Highlights:
+- Open source under Apache-2.0, self-hosted on a single Linux host with Docker
+- Workers on Linux (including Raspberry Pi), macOS and Windows connect outbound over WSS
+- Runs Claude Code, Codex, Pi and OpenCode through versioned runtime adapters in per-job sandboxes
+- Chat-to-job drafts, phased plans and a workflow editor of agent steps and approvals
+- Human approval before merges and deploys, with a durable job history and live activity log
+- Fastify API, React console, PostgreSQL, Redis and a Zod-validated worker protocol
+
+Stack: TypeScript, Fastify, React, PostgreSQL, Redis, AI Agents, Open Source
 
 ### Content Generator & Distributor
 

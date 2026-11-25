@@ -35,15 +35,29 @@ export function ProjectScene({ go, inspectProject, projects, randomDiscovery, se
         <p className="mt-2 text-slate-500">{selectedProject.year}</p>
         <p className="mt-8 max-w-3xl text-lg leading-8 text-slate-300">{selectedProject.story}</p>
 
-        {selectedProject.link && (
-          <a
-            href={selectedProject.link}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-8 inline-flex border border-cyan-300 bg-cyan-300 px-4 py-3 text-sm uppercase tracking-[0.14em] text-slate-950 transition hover:bg-cyan-200"
-          >
-            {t("projects.visitProject")}
-          </a>
+        {(selectedProject.link || selectedProject.repo) && (
+          <div className="mt-8 flex flex-wrap gap-3">
+            {selectedProject.link && (
+              <a
+                href={selectedProject.link}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex border border-cyan-300 bg-cyan-300 px-4 py-3 text-sm uppercase tracking-[0.14em] text-slate-950 transition hover:bg-cyan-200"
+              >
+                {t("projects.visitProject")}
+              </a>
+            )}
+            {selectedProject.repo && (
+              <a
+                href={selectedProject.repo}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex border border-cyan-300 px-4 py-3 text-sm uppercase tracking-[0.14em] text-cyan-200 transition hover:bg-cyan-300/10"
+              >
+                {t("projects.viewSource")}
+              </a>
+            )}
+          </div>
         )}
 
         <div className="mt-8 grid gap-4 md:grid-cols-2">
